@@ -230,6 +230,8 @@
   var eur4=function(n){return new Intl.NumberFormat('pt-PT',{minimumFractionDigits:4,maximumFractionDigits:4}).format(n)+' €';};
   var nf=function(n,d){return new Intl.NumberFormat('pt-PT',{minimumFractionDigits:d,maximumFractionDigits:d}).format(n);};
   var parseNum=function(s){ if(typeof s==='number')return s; s=(''+s).replace(/[^0-9,.\-]/g,''); if(s.indexOf(',')>-1&&s.indexOf('.')>-1)s=s.replace(/\./g,'').replace(',','.'); else if(s.indexOf(',')>-1)s=s.replace(',','.'); var v=parseFloat(s); return isNaN(v)?0:v; };
+  var esc=function(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); };
+  var MAX_BYTES=3*1024*1024, MAX_LINES=200000;
 
   var state={kWh:0,days:{},from:null,to:null,dayCount:0,loaded:false};
 
@@ -338,8 +340,9 @@
   function parseShelly(text){
     text=text.replace(/^﻿/,'');
     var lines=text.split(/\r?\n/), section=null, total=0, days={}, from=null, to=null;
-    var reRow=/^\s*(\d{2}\/\d{2}\/\d{4})\s+(\d{2}:\d{2})\s*,\s*([-\d.,]+)/;
-    for(var i=0;i<lines.length;i++){
+    var reRow=/^\s*(\d{2}\/\d{2}\/\d{4})\s+(\d{2}:\d{2})\s*,\s*(-?\d{1,7}(?:[.,]\d{1,4})?)\s*$/;
+    var lim=Math.min(lines.length,MAX_LINES);
+    for(var i=0;i<lim;i++){
       var raw=lines[i], low=raw.trim().toLowerCase();
       if(!low) continue;
       if(low.indexOf('consumo')===0){section='consumo';continue;}
@@ -355,12 +358,14 @@
     }
     return {kWh:total/1000,days:days,from:from,to:to,dayCount:Object.keys(days).length};
   }
+  function fileErr(msg){ var d=$('drop'); d.classList.remove('loaded'); state.loaded=false;
+    d.innerHTML='<div class="big" style="color:var(--crit)">'+esc(msg)+'</div><div class="small">clica para escolher outro ficheiro</div>'; }
   function loadText(text,name){
     var rp=parseShelly(text);
-    if(rp.dayCount===0){ $('drop').innerHTML='<div class="big" style="color:var(--crit)">CSV sem linhas de consumo. É o export horário do Shelly?</div><div class="small">clica para tentar outro</div>'; return; }
+    if(rp.dayCount===0){ fileErr('CSV sem linhas de consumo. É o export horário do Shelly?'); return; }
     state.kWh=rp.kWh; state.days=rp.days; state.from=rp.from; state.to=rp.to; state.dayCount=rp.dayCount; state.loaded=true;
     var d=$('drop'); d.classList.add('loaded');
-    d.innerHTML='<div class="filerow"><span class="chk">✓</span><b>'+(name||'CSV')+'</b></div><div class="filemeta">'+nf(rp.kWh,3)+' kWh · '+rp.dayCount+' dia(s) · '+rp.from+' → '+rp.to+'</div>';
+    d.innerHTML='<div class="filerow"><span class="chk">✓</span><b>'+esc(name||'CSV')+'</b></div><div class="filemeta">'+nf(rp.kWh,3)+' kWh · '+rp.dayCount+' dia(s) · '+esc(rp.from||'')+' → '+esc(rp.to||'')+'</div>';
     $('detCard').style.display=''; $('fixedCard').style.display=''; $('chartCard').style.display='';
     renderSplit(); drawChart();
   }
@@ -390,7 +395,16 @@
   drop.addEventListener('dragleave',function(){drop.classList.remove('over');});
   drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('over');var f=e.dataTransfer.files[0];if(f)rd(f);});
   file.addEventListener('change',function(e){var f=e.target.files[0];if(f)rd(f);});
-  function rd(f){var r=new FileReader();r.onload=function(){loadText(r.result,f.name);};r.readAsText(f);}
+  function rd(f){
+    if(!f){ return; }
+    if(f.size>MAX_BYTES){ fileErr('Ficheiro demasiado grande (máx 3 MB). O export do Shelly é pequeno.'); return; }
+    var okName=/\.csv$/i.test(f.name||''), okType=!f.type||/csv|text|plain|excel|spreadsheet/i.test(f.type);
+    if(!okName && !okType){ fileErr('Aceita só ficheiros .csv (o export horário do Shelly).'); return; }
+    var r=new FileReader();
+    r.onerror=function(){ fileErr('Não consegui ler o ficheiro. Tenta novamente.'); };
+    r.onload=function(){ try{ loadText(String(r.result||''), f.name); }catch(e){ fileErr('Ficheiro inválido ou corrompido.'); } };
+    r.readAsText(f);
+  }
   ['rEner','rRedes','rIEC','rPot','rDgeg','rCav','rK6','rK23','rDays'].forEach(function(id){$(id).addEventListener('input',renderAll);});
   ['nEner','nPot','nRedes','cKwh','cDays'].forEach(function(id){$(id).addEventListener('input',renderCompare);});
   $('fixSplit').addEventListener('input',renderSplit);
