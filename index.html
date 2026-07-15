@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<title>Divisão de Conta de Luz — Inquilino</title>
+<style>
+  :root{
+    --ground:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F4;
+    --ink:#171C22; --muted:#5A6672; --line:#E2E7EC;
+    --accent:#C6790C; --accent-soft:rgba(198,121,12,.12); --accent-line:rgba(198,121,12,.35);
+    --good:#2E7D5B; --crit:#C0392B;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#0E1216; --surface:#161C22; --surface-2:#1E262E;
+      --ink:#E8EDF2; --muted:#8A97A4; --line:#263039;
+      --accent:#E9A62C; --accent-soft:rgba(233,166,44,.14); --accent-line:rgba(233,166,44,.4);
+      --good:#4FB98A; --crit:#E06B5C;
+    }
+  }
+  :root[data-theme="light"]{
+    --ground:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F4;
+    --ink:#171C22; --muted:#5A6672; --line:#E2E7EC;
+    --accent:#C6790C; --accent-soft:rgba(198,121,12,.12); --accent-line:rgba(198,121,12,.35);
+    --good:#2E7D5B; --crit:#C0392B;
+  }
+  :root[data-theme="dark"]{
+    --ground:#0E1216; --surface:#161C22; --surface-2:#1E262E;
+    --ink:#E8EDF2; --muted:#8A97A4; --line:#263039;
+    --accent:#E9A62C; --accent-soft:rgba(233,166,44,.14); --accent-line:rgba(233,166,44,.4);
+    --good:#4FB98A; --crit:#E06B5C;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+    line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:960px;margin:0 auto;padding:clamp(16px,4vw,40px);}
+  header.top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:26px;}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .bolt{width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);
+    display:grid;place-items:center;font-size:17px;border:1px solid var(--accent-line);}
+  h1{font-size:clamp(19px,2.6vw,23px);font-weight:700;letter-spacing:-.01em;margin:0;text-wrap:balance;}
+  .sub{color:var(--muted);font-size:13px;margin-top:2px;}
+  .priv{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+  .priv::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--good);}
+
+  .lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:clamp(16px,3vw,24px);margin-bottom:18px;}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;}
+
+  /* result card */
+  .result{background:
+      linear-gradient(180deg,var(--accent-soft),transparent 60%),var(--surface);
+    border-color:var(--accent-line);}
+  .result .lbl{color:var(--accent);}
+  .hero{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;margin:6px 0 4px;}
+  .hero .amt{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(38px,7vw,56px);
+    font-weight:600;letter-spacing:-.02em;line-height:1;color:var(--accent);}
+  .hero .cap{color:var(--muted);font-size:13px;padding-bottom:6px;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:16px;}
+  .stat{background:var(--surface);padding:12px 14px;}
+  .stat .k{font-size:11px;color:var(--muted);letter-spacing:.03em;}
+  .stat .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:19px;font-weight:600;margin-top:3px;}
+  .stat .v small{font-size:12px;color:var(--muted);font-weight:400;}
+  .altline{margin-top:14px;font-size:13.5px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;align-items:baseline;}
+  .altline b{color:var(--ink);font-family:var(--mono);}
+
+  /* grid of two input cards */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:640px){.cols{grid-template-columns:1fr;}}
+  .card h2{font-size:14px;font-weight:700;margin:0 0 3px;letter-spacing:-.01em;}
+  .card .hint{font-size:12.5px;color:var(--muted);margin:0 0 16px;}
+
+  /* dropzone */
+  .drop{border:1.5px dashed var(--accent-line);border-radius:11px;padding:22px 16px;text-align:center;
+    cursor:pointer;transition:background .15s,border-color .15s;background:var(--surface-2);}
+  .drop:hover,.drop.over{background:var(--accent-soft);border-color:var(--accent);}
+  .drop .big{font-weight:600;font-size:14px;}
+  .drop .small{font-size:12px;color:var(--muted);margin-top:4px;}
+  .drop.loaded{border-style:solid;border-color:var(--good);background:transparent;text-align:left;}
+  .filerow{display:flex;align-items:center;gap:10px;font-size:13px;}
+  .filerow .chk{color:var(--good);font-weight:700;}
+  .filemeta{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px;margin-top:4px;}
+
+  /* invoice fields */
+  .field{display:flex;flex-direction:column;gap:5px;margin-bottom:13px;}
+  .field label{font-size:12.5px;color:var(--muted);}
+  .field .inwrap{display:flex;align-items:center;border:1px solid var(--line);border-radius:9px;
+    background:var(--surface-2);overflow:hidden;}
+  .field input{border:0;background:transparent;color:var(--ink);font-family:var(--mono);
+    font-variant-numeric:tabular-nums;font-size:15px;padding:9px 11px;width:100%;text-align:right;}
+  .field input:focus{outline:none;}
+  .field .inwrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
+  .field .unit{padding:0 11px;font-size:12.5px;color:var(--muted);white-space:nowrap;border-left:1px solid var(--line);
+    align-self:stretch;display:flex;align-items:center;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;}
+  @media(max-width:400px){.grid2{grid-template-columns:1fr;}}
+
+  /* chart */
+  .chartwrap{position:relative;}
+  canvas{width:100%;height:180px;display:block;}
+  .chartcap{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:6px;}
+
+  /* breakdown table */
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  th,td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line);}
+  th:first-child,td:first-child{text-align:left;}
+  thead th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;}
+  td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;}
+  tr.tot td{border-top:2px solid var(--line);border-bottom:none;font-weight:700;padding-top:11px;}
+  tr.tot td.share{color:var(--accent);}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--accent-soft);
+    color:var(--accent);font-weight:600;letter-spacing:.02em;}
+  .note{font-size:12.5px;color:var(--muted);margin-top:14px;padding-left:12px;border-left:2px solid var(--accent-line);}
+  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:26px;}
+  .warnrow{color:var(--crit);font-size:12.5px;margin-top:8px;display:none;}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="bolt">⚡</div>
+      <div>
+        <h1>Divisão da Conta de Luz</h1>
+        <div class="sub">Consumo do inquilino (Shelly) &times; a fatura da EDP/Eni</div>
+      </div>
+    </div>
+    <div class="priv">Tudo calculado no teu navegador &mdash; nada é enviado</div>
+  </header>
+
+  <!-- RESULT -->
+  <section class="card result">
+    <div class="lbl">A cobrar ao inquilino</div>
+    <div class="hero">
+      <div class="amt" id="heroAmt">&mdash;</div>
+      <div class="cap" id="heroCap">carrega o CSV para calcular</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="k">Consumo do inquilino</div><div class="v"><span id="sKwh">&mdash;</span> <small>kWh</small></div></div>
+      <div class="stat"><div class="k">Período medido</div><div class="v" id="sDays" style="font-size:15px">&mdash;</div></div>
+      <div class="stat"><div class="k">Preço médio da fatura</div><div class="v"><span id="sRate">&mdash;</span> <small>€/kWh</small></div></div>
+      <div class="stat"><div class="k">Peso no total faturado</div><div class="v" id="sShare">&mdash;</div></div>
+    </div>
+    <div class="altline">
+      Só energia consumida (sem custos fixos): <b id="altEnergy">&mdash;</b>
+      <span>&nbsp;·&nbsp; método usado: <span class="tag" id="methodTag">proporcional (tudo incluído)</span></span>
+    </div>
+    <div class="warnrow" id="periodWarn"></div>
+  </section>
+
+  <div class="cols">
+    <!-- CSV -->
+    <section class="card">
+      <h2>1 · Consumo do inquilino</h2>
+      <p class="hint">Exporta o CSV horário do Shelly e larga-o aqui.</p>
+      <div class="drop" id="drop">
+        <input type="file" id="file" accept=".csv,text/csv" hidden>
+        <div class="big">Largar o CSV do Shelly</div>
+        <div class="small">ou clicar para escolher</div>
+      </div>
+    </section>
+
+    <!-- INVOICE -->
+    <section class="card">
+      <h2>2 · Valores da fatura</h2>
+      <p class="hint">Pré-preenchido com a fatura de junho. Ajusta a cada mês.</p>
+      <div class="field">
+        <label for="fTotal">Total da fatura</label>
+        <div class="inwrap"><input id="fTotal" inputmode="decimal" value="114,36"><span class="unit">€</span></div>
+      </div>
+      <div class="grid2">
+        <div class="field">
+          <label for="fKwh">Consumo faturado</label>
+          <div class="inwrap"><input id="fKwh" inputmode="decimal" value="468"><span class="unit">kWh</span></div>
+        </div>
+        <div class="field">
+          <label for="fDays">Dias do período</label>
+          <div class="inwrap"><input id="fDays" inputmode="decimal" value="31"><span class="unit">dias</span></div>
+        </div>
+      </div>
+      <div class="field">
+        <label for="fEnergy">Custo só de energia ativa <span title="soma das linhas de energia da fatura, sem potência/taxas">(energia+redes, s/ potência e taxas)</span></label>
+        <div class="inwrap"><input id="fEnergy" inputmode="decimal" value="84,97"><span class="unit">€</span></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CHART -->
+  <section class="card" id="chartCard" style="display:none">
+    <div class="lbl">Consumo por dia</div>
+    <div class="chartwrap"><canvas id="chart"></canvas></div>
+    <div class="chartcap"><span id="chartFrom"></span><span id="chartTo"></span></div>
+  </section>
+
+  <!-- BREAKDOWN -->
+  <section class="card" id="breakCard" style="display:none">
+    <div class="lbl" style="margin-bottom:12px">Detalhe face à fatura</div>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Componente</th><th>Fatura (total)</th><th>Parte do inquilino</th></tr></thead>
+        <tbody id="breakBody"></tbody>
+      </table>
+    </div>
+    <p class="note" id="breakNote"></p>
+  </section>
+
+  <footer>Uso pessoal · os valores de imposto/IVA já vêm incluídos no total e no preço médio.</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(id){return document.getElementById(id);};
+  var eur=new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR'});
+  var eur4=new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR',minimumFractionDigits:4,maximumFractionDigits:4});
+  var nf=function(n,d){return new Intl.NumberFormat('pt-PT',{minimumFractionDigits:d,maximumFractionDigits:d}).format(n);};
+  var parseNum=function(s){ if(typeof s==='number')return s; s=(''+s).replace(/[^0-9,.\-]/g,'').replace(/\./g,'').replace(',', '.'); var v=parseFloat(s); return isNaN(v)?0:v; };
+
+  var state={kWh:0,days:{},from:null,to:null,dayCount:0,loaded:false};
+
+  // ---- CSV parse: Shelly two-section export (Consumo + Total devolvido) ----
+  function parseShelly(text){
+    text=text.replace(/^﻿/,'');
+    var lines=text.split(/\r?\n/), section=null, total=0, days={}, from=null, to=null;
+    var reRow=/^\s*(\d{2}\/\d{2}\/\d{4})\s+(\d{2}:\d{2})\s*,\s*([-\d.,]+)/;
+    for(var i=0;i<lines.length;i++){
+      var raw=lines[i], low=raw.trim().toLowerCase();
+      if(!low) continue;
+      if(low.indexOf('consumo')===0){section='consumo';continue;}
+      if(low.indexOf('total devolvido')===0||low.indexOf('devolvid')===0){section='devolvido';continue;}
+      if(low.indexOf('hora')===0||low.indexOf('data')===0){continue;}
+      var m=raw.match(reRow);
+      if(!m) continue;
+      if(section!=='consumo') continue;          // only count consumption, never returned energy
+      // Shelly exports dot-decimal (e.g. "1427.72"). Handle comma-decimal + EU thousands defensively.
+      var s=m[3].replace(/\s/g,''), wh;
+      if(s.indexOf(',')>-1 && s.indexOf('.')>-1){ wh=parseFloat(s.replace(/\./g,'').replace(',','.')); } // 1.234,56
+      else if(s.indexOf(',')>-1){ wh=parseFloat(s.replace(',','.')); }                                    // 156,52
+      else { wh=parseFloat(s); }                                                                          // 156.52
+      var day=m[1];
+      if(isNaN(wh)) continue;
+      total+=wh; days[day]=(days[day]||0)+wh;
+      var stamp=day+' '+m[2];
+      if(from===null) from=stamp; to=stamp;
+    }
+    return {kWh:total/1000,days:days,from:from,to:to,dayCount:Object.keys(days).length};
+  }
+
+  function loadText(text,name){
+    var r=parseShelly(text);
+    if(r.dayCount===0){ flagError('Não encontrei linhas de consumo nesse CSV. É o export horário do Shelly?'); return; }
+    state.kWh=r.kWh; state.days=r.days; state.from=r.from; state.to=r.to; state.dayCount=r.dayCount; state.loaded=true;
+    var d=$('drop'); d.classList.add('loaded');
+    d.innerHTML='<div class="filerow"><span class="chk">✓</span><b>'+ (name||'CSV carregado') +'</b></div>'+
+      '<div class="filemeta">'+ nf(r.kWh,3)+' kWh · '+ r.dayCount +' dia(s) · '+ (r.from||'') +' → '+ (r.to||'') +'</div>';
+    $('chartCard').style.display=''; $('breakCard').style.display='';
+    compute(); drawChart();
+  }
+  function flagError(msg){ var d=$('drop'); d.classList.remove('loaded'); d.innerHTML='<div class="big" style="color:var(--crit)">'+msg+'</div><div class="small">clica para tentar outro ficheiro</div>'; }
+
+  // ---- compute ----
+  function compute(){
+    if(!state.loaded) return;
+    var total=parseNum($('fTotal').value), kwh=parseNum($('fKwh').value),
+        days=parseNum($('fDays').value), energy=parseNum($('fEnergy').value);
+    var tk=state.kWh;
+    var blendedRate= kwh>0 ? total/kwh : 0;
+    var energyRate = kwh>0 ? energy/kwh : 0;
+    var share      = kwh>0 ? tk/kwh : 0;
+    var chargeBlend= tk*blendedRate;
+    var chargeEnergy=tk*energyRate;
+    var fixedTotal = total-energy;
+    var fixedShare = share*fixedTotal;
+    var energyShare= tk*energyRate;
+
+    $('heroAmt').textContent=eur.format(chargeBlend);
+    $('heroCap').textContent='pelos '+nf(tk,3)+' kWh medidos';
+    $('sKwh').textContent=nf(tk,3);
+    $('sDays').textContent=state.dayCount+ (state.dayCount===1?' dia':' dias');
+    $('sRate').textContent=nf(blendedRate,4);
+    $('sShare').textContent=nf(share*100,1)+' %';
+    $('altEnergy').textContent=eur.format(chargeEnergy);
+
+    // period sanity note
+    var w=$('periodWarn');
+    if(state.dayCount< days-1){
+      w.style.display='block';
+      w.textContent='Nota: o CSV cobre '+state.dayCount+' dia(s), mas o período faturado tem '+nf(days,0)+'. O "peso no total" só é comparável quando o CSV cobre o mesmo período da fatura.';
+    } else { w.style.display='none'; }
+
+    // breakdown table
+    var rows=[
+      ['Energia ativa (energia + acesso às redes)', energy, energyShare, false],
+      ['Custos fixos (potência + taxas + IVA)', fixedTotal, fixedShare, false],
+      ['Total', total, chargeBlend, true]
+    ];
+    var html='';
+    for(var i=0;i<rows.length;i++){
+      var r=rows[i];
+      html+='<tr'+(r[3]?' class="tot"':'')+'><td>'+r[0]+'</td><td class="n">'+eur.format(r[1])+'</td><td class="n'+(r[3]?' share':'')+'">'+eur.format(r[2])+'</td></tr>';
+    }
+    $('breakBody').innerHTML=html;
+    $('breakNote').innerHTML='Método <b>proporcional</b>: o inquilino paga a sua fatia ('+nf(share*100,1)+'%) de <i>tudo</i> — energia mais a parte proporcional da potência, taxas e IVA. '+
+      'Em alternativa, "só energia consumida" ('+eur.format(chargeEnergy)+') cobra apenas a energia que ele gastou e tu absorves os custos fixos.';
+  }
+
+  // ---- chart ----
+  function drawChart(){
+    var c=$('chart'), dpr=window.devicePixelRatio||1;
+    var w=c.clientWidth, h=180; c.width=w*dpr; c.height=h*dpr;
+    var ctx=c.getContext('2d'); ctx.scale(dpr,dpr); ctx.clearRect(0,0,w,h);
+    var keys=Object.keys(state.days).sort(function(a,b){ return toDate(a)-toDate(b); });
+    if(!keys.length) return;
+    var vals=keys.map(function(k){return state.days[k]/1000;});
+    var max=Math.max.apply(null,vals)||1;
+    var css=getComputedStyle(document.documentElement);
+    var accent=css.getPropertyValue('--accent').trim();
+    var line=css.getPropertyValue('--line').trim();
+    var muted=css.getPropertyValue('--muted').trim();
+    var padB=26, padT=18, padX=6;
+    // grid
+    ctx.strokeStyle=line; ctx.lineWidth=1;
+    for(var g=0;g<=2;g++){ var y=padT+(h-padT-padB)*g/2; ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
+    var n=keys.length, gap=Math.min(18,w*0.04);
+    var bw=(w-padX*2-gap*(n-1))/n;
+    ctx.font='11px '+css.getPropertyValue('--sans');
+    for(var i=0;i<n;i++){
+      var x=padX+i*(bw+gap), bh=(h-padT-padB)*(vals[i]/max);
+      var y0=h-padB-bh;
+      ctx.fillStyle=accent; ctx.globalAlpha=0.9;
+      roundRect(ctx,x,y0,bw,bh,4); ctx.fill(); ctx.globalAlpha=1;
+      // value
+      ctx.fillStyle=muted; ctx.textAlign='center';
+      ctx.fillText(nf(vals[i],2), x+bw/2, y0-5);
+      // day label (dd/mm)
+      var dd=keys[i].slice(0,5);
+      ctx.fillText(dd, x+bw/2, h-9);
+    }
+    $('chartFrom').textContent=state.from||''; $('chartTo').textContent='pico '+nf(max,2)+' kWh/dia';
+  }
+  function roundRect(ctx,x,y,w,h,r){ r=Math.min(r,w/2,h/2); if(h<=0){return;} ctx.beginPath();
+    ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+  function toDate(s){ var p=s.split('/'); return new Date(+p[2],+p[1]-1,+p[0]); }
+
+  // ---- wiring ----
+  var drop=$('drop'), file=$('file');
+  drop.addEventListener('click',function(){file.click();});
+  drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('over');});
+  drop.addEventListener('dragleave',function(){drop.classList.remove('over');});
+  drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('over');
+    var f=e.dataTransfer.files[0]; if(f) read(f);});
+  file.addEventListener('change',function(e){var f=e.target.files[0]; if(f) read(f);});
+  function read(f){ var rd=new FileReader(); rd.onload=function(){loadText(rd.result,f.name);}; rd.readAsText(f); }
+  ['fTotal','fKwh','fDays','fEnergy'].forEach(function(id){ $(id).addEventListener('input',compute); });
+  window.addEventListener('resize',function(){ if(state.loaded) drawChart(); });
+  var mq=window.matchMedia('(prefers-color-scheme:dark)'); if(mq.addEventListener) mq.addEventListener('change',function(){if(state.loaded)drawChart();});
+})();
+</script>
+</body>
+</html>
