@@ -5,83 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<title>Divisão de Conta de Luz — Inquilino</title>
+<title>Divisão e Comparação da Conta de Luz</title>
 <style>
   :root{
     --ground:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F4;
     --ink:#171C22; --muted:#5A6672; --line:#E2E7EC;
     --accent:#C6790C; --accent-soft:rgba(198,121,12,.12); --accent-line:rgba(198,121,12,.35);
-    --good:#2E7D5B; --crit:#C0392B;
+    --good:#2E7D5B; --good-soft:rgba(46,125,91,.12); --crit:#C0392B; --crit-soft:rgba(192,57,43,.1);
     --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --ground:#0E1216; --surface:#161C22; --surface-2:#1E262E;
-      --ink:#E8EDF2; --muted:#8A97A4; --line:#263039;
-      --accent:#E9A62C; --accent-soft:rgba(233,166,44,.14); --accent-line:rgba(233,166,44,.4);
-      --good:#4FB98A; --crit:#E06B5C;
-    }
-  }
-  :root[data-theme="light"]{
-    --ground:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F4;
-    --ink:#171C22; --muted:#5A6672; --line:#E2E7EC;
-    --accent:#C6790C; --accent-soft:rgba(198,121,12,.12); --accent-line:rgba(198,121,12,.35);
-    --good:#2E7D5B; --crit:#C0392B;
-  }
-  :root[data-theme="dark"]{
+  @media (prefers-color-scheme:dark){:root{
     --ground:#0E1216; --surface:#161C22; --surface-2:#1E262E;
     --ink:#E8EDF2; --muted:#8A97A4; --line:#263039;
     --accent:#E9A62C; --accent-soft:rgba(233,166,44,.14); --accent-line:rgba(233,166,44,.4);
-    --good:#4FB98A; --crit:#E06B5C;
-  }
+    --good:#4FB98A; --good-soft:rgba(79,185,138,.15); --crit:#E06B5C; --crit-soft:rgba(224,107,92,.14);
+  }}
+  :root[data-theme="light"]{--ground:#F4F6F8;--surface:#FFFFFF;--surface-2:#EDF1F4;--ink:#171C22;--muted:#5A6672;--line:#E2E7EC;--accent:#C6790C;--accent-soft:rgba(198,121,12,.12);--accent-line:rgba(198,121,12,.35);--good:#2E7D5B;--good-soft:rgba(46,125,91,.12);--crit:#C0392B;--crit-soft:rgba(192,57,43,.1);}
+  :root[data-theme="dark"]{--ground:#0E1216;--surface:#161C22;--surface-2:#1E262E;--ink:#E8EDF2;--muted:#8A97A4;--line:#263039;--accent:#E9A62C;--accent-soft:rgba(233,166,44,.14);--accent-line:rgba(233,166,44,.4);--good:#4FB98A;--good-soft:rgba(79,185,138,.15);--crit:#E06B5C;--crit-soft:rgba(224,107,92,.14);}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
-    line-height:1.5;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:960px;margin:0 auto;padding:clamp(16px,4vw,40px);}
-  header.top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
-    border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:26px;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1000px;margin:0 auto;padding:clamp(16px,4vw,40px);}
+  header.top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:22px;}
   .brand{display:flex;align-items:center;gap:11px;}
-  .bolt{width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);
-    display:grid;place-items:center;font-size:17px;border:1px solid var(--accent-line);}
+  .bolt{width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-size:17px;border:1px solid var(--accent-line);}
   h1{font-size:clamp(19px,2.6vw,23px);font-weight:700;letter-spacing:-.01em;margin:0;text-wrap:balance;}
   .sub{color:var(--muted);font-size:13px;margin-top:2px;}
   .priv{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:6px;}
   .priv::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--good);}
-
   .lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;
-    padding:clamp(16px,3vw,24px);margin-bottom:18px;}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(16px,3vw,22px);margin-bottom:18px;}
+  .card h2{font-size:15px;font-weight:700;margin:0 0 3px;letter-spacing:-.01em;}
+  .card .hint{font-size:12.5px;color:var(--muted);margin:0 0 15px;}
   .num{font-family:var(--mono);font-variant-numeric:tabular-nums;}
 
-  /* result card */
-  .result{background:
-      linear-gradient(180deg,var(--accent-soft),transparent 60%),var(--surface);
-    border-color:var(--accent-line);}
+  /* tabs */
+  .tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
+  .tab{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:var(--sans);}
+  .tab[aria-selected="true"]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-line);}
+  .panel[hidden]{display:none;}
+
+  /* result */
+  .result{background:linear-gradient(180deg,var(--accent-soft),transparent 60%),var(--surface);border-color:var(--accent-line);}
   .result .lbl{color:var(--accent);}
   .hero{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;margin:6px 0 4px;}
-  .hero .amt{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(38px,7vw,56px);
-    font-weight:600;letter-spacing:-.02em;line-height:1;color:var(--accent);}
+  .hero .amt{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(34px,6.5vw,50px);font-weight:600;letter-spacing:-.02em;line-height:1;color:var(--accent);}
   .hero .cap{color:var(--muted);font-size:13px;padding-bottom:6px;}
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;
-    background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:16px;}
-  .stat{background:var(--surface);padding:12px 14px;}
-  .stat .k{font-size:11px;color:var(--muted);letter-spacing:.03em;}
-  .stat .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:19px;font-weight:600;margin-top:3px;}
-  .stat .v small{font-size:12px;color:var(--muted);font-weight:400;}
-  .altline{margin-top:14px;font-size:13.5px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;align-items:baseline;}
-  .altline b{color:var(--ink);font-family:var(--mono);}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:16px;}
+  .stat{background:var(--surface);padding:11px 13px;}
+  .stat .k{font-size:11px;color:var(--muted);}
+  .stat .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:18px;font-weight:600;margin-top:3px;}
+  .stat .v small{font-size:11.5px;color:var(--muted);font-weight:400;}
 
-  /* grid of two input cards */
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-  @media(max-width:640px){.cols{grid-template-columns:1fr;}}
-  .card h2{font-size:14px;font-weight:700;margin:0 0 3px;letter-spacing:-.01em;}
-  .card .hint{font-size:12.5px;color:var(--muted);margin:0 0 16px;}
+  @media(max-width:680px){.cols{grid-template-columns:1fr;}}
 
-  /* dropzone */
-  .drop{border:1.5px dashed var(--accent-line);border-radius:11px;padding:22px 16px;text-align:center;
-    cursor:pointer;transition:background .15s,border-color .15s;background:var(--surface-2);}
-  .drop:hover,.drop.over{background:var(--accent-soft);border-color:var(--accent);}
+  .drop{border:1.5px dashed var(--accent-line);border-radius:11px;padding:20px 16px;text-align:center;cursor:pointer;background:var(--surface-2);transition:background .15s;}
+  .drop:hover,.drop.over{background:var(--accent-soft);}
   .drop .big{font-weight:600;font-size:14px;}
   .drop .small{font-size:12px;color:var(--muted);margin-top:4px;}
   .drop.loaded{border-style:solid;border-color:var(--good);background:transparent;text-align:left;}
@@ -89,37 +69,43 @@
   .filerow .chk{color:var(--good);font-weight:700;}
   .filemeta{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px;margin-top:4px;}
 
-  /* invoice fields */
-  .field{display:flex;flex-direction:column;gap:5px;margin-bottom:13px;}
-  .field label{font-size:12.5px;color:var(--muted);}
-  .field .inwrap{display:flex;align-items:center;border:1px solid var(--line);border-radius:9px;
-    background:var(--surface-2);overflow:hidden;}
-  .field input{border:0;background:transparent;color:var(--ink);font-family:var(--mono);
-    font-variant-numeric:tabular-nums;font-size:15px;padding:9px 11px;width:100%;text-align:right;}
+  .field{display:flex;flex-direction:column;gap:5px;margin-bottom:11px;}
+  .field label{font-size:12px;color:var(--muted);}
+  .field .inwrap{display:flex;align-items:center;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);overflow:hidden;}
+  .field input{border:0;background:transparent;color:var(--ink);font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:14.5px;padding:8px 10px;width:100%;text-align:right;}
   .field input:focus{outline:none;}
   .field .inwrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
-  .field .unit{padding:0 11px;font-size:12.5px;color:var(--muted);white-space:nowrap;border-left:1px solid var(--line);
-    align-self:stretch;display:flex;align-items:center;}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;}
-  @media(max-width:400px){.grid2{grid-template-columns:1fr;}}
+  .field .unit{padding:0 10px;font-size:12px;color:var(--muted);white-space:nowrap;border-left:1px solid var(--line);align-self:stretch;display:flex;align-items:center;}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;}
+  @media(max-width:440px){.fgrid{grid-template-columns:1fr;}}
+  .fgrid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 12px;}
+  @media(max-width:560px){.fgrid3{grid-template-columns:1fr 1fr;}}
 
-  /* chart */
-  .chartwrap{position:relative;}
-  canvas{width:100%;height:180px;display:block;}
-  .chartcap{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:6px;}
-
-  /* breakdown table */
-  table{width:100%;border-collapse:collapse;font-size:13.5px;}
-  th,td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line);}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th,td{text-align:right;padding:8px 8px;border-bottom:1px solid var(--line);}
   th:first-child,td:first-child{text-align:left;}
-  thead th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;}
+  thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;}
   td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;}
-  tr.tot td{border-top:2px solid var(--line);border-bottom:none;font-weight:700;padding-top:11px;}
-  tr.tot td.share{color:var(--accent);}
-  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--accent-soft);
-    color:var(--accent);font-weight:600;letter-spacing:.02em;}
-  .note{font-size:12.5px;color:var(--muted);margin-top:14px;padding-left:12px;border-left:2px solid var(--accent-line);}
-  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:26px;}
+  td.calc{color:var(--muted);font-size:12px;}
+  tr.section td{background:var(--surface-2);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;padding-top:9px;padding-bottom:5px;}
+  tr.sub td{border-bottom:2px solid var(--line);font-weight:600;}
+  tr.grand td{border-top:2px solid var(--accent-line);border-bottom:none;font-weight:700;font-size:14px;padding-top:11px;}
+  tr.grand td.n{color:var(--accent);}
+  .note{font-size:12px;color:var(--muted);margin-top:13px;padding-left:12px;border-left:2px solid var(--accent-line);}
+
+  .split{display:flex;align-items:center;gap:12px;margin:4px 0 2px;}
+  .split input[type=range]{flex:1;accent-color:var(--accent);}
+  .split .val{font-family:var(--mono);font-weight:600;min-width:118px;text-align:right;font-size:13px;}
+
+  /* comparison */
+  .verdict{border-radius:11px;padding:14px 16px;margin-top:4px;font-size:14px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .verdict.win{background:var(--good-soft);border:1px solid var(--good);}
+  .verdict.lose{background:var(--crit-soft);border:1px solid var(--crit);}
+  .verdict .big{font-family:var(--mono);font-weight:700;font-size:20px;}
+  .verdict.win .big{color:var(--good);} .verdict.lose .big{color:var(--crit);}
+  .cmpcol h3{font-size:13px;font-weight:700;margin:0 0 10px;display:flex;align-items:center;gap:8px;}
+  .cmpcol h3 .dot{width:9px;height:9px;border-radius:50%;}
+  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:24px;line-height:1.7;}
   .warnrow{color:var(--crit);font-size:12.5px;margin-top:8px;display:none;}
 </style>
 
@@ -128,104 +114,227 @@
     <div class="brand">
       <div class="bolt">⚡</div>
       <div>
-        <h1>Divisão da Conta de Luz</h1>
-        <div class="sub">Consumo do inquilino (Shelly) &times; a fatura da EDP/Eni</div>
+        <h1>Conta de Luz</h1>
+        <div class="sub">Divisão com o inquilino &amp; comparação de fornecedores</div>
       </div>
     </div>
-    <div class="priv">Tudo calculado no teu navegador &mdash; nada é enviado</div>
+    <div class="priv">Tudo no teu navegador &mdash; nada é enviado</div>
   </header>
 
-  <!-- RESULT -->
-  <section class="card result">
-    <div class="lbl">A cobrar ao inquilino</div>
-    <div class="hero">
-      <div class="amt" id="heroAmt">&mdash;</div>
-      <div class="cap" id="heroCap">carrega o CSV para calcular</div>
+  <!-- shared: current tariffs -->
+  <section class="card">
+    <h2>Tarifas da tua fatura atual</h2>
+    <p class="hint">Pré-preenchido com a fatura Eni de junho (BTN Simples, 4,6 kVA). Usado nas duas secções abaixo.</p>
+    <div class="fgrid3">
+      <div class="field"><label>Preço da energia</label><div class="inwrap"><input id="rEner" inputmode="decimal" value="0,120873"><span class="unit">€/kWh</span></div></div>
+      <div class="field"><label>Acesso às redes</label><div class="inwrap"><input id="rRedes" inputmode="decimal" value="0,060700"><span class="unit">€/kWh</span></div></div>
+      <div class="field"><label>Taxa IEC</label><div class="inwrap"><input id="rIEC" inputmode="decimal" value="0,001000"><span class="unit">€/kWh</span></div></div>
+      <div class="field"><label>Potência (termo fixo)</label><div class="inwrap"><input id="rPot" inputmode="decimal" value="0,329100"><span class="unit">€/dia</span></div></div>
+      <div class="field"><label>Taxa DGEG</label><div class="inwrap"><input id="rDgeg" inputmode="decimal" value="0,07"><span class="unit">€/mês</span></div></div>
+      <div class="field"><label>Contrib. Audiovisual</label><div class="inwrap"><input id="rCav" inputmode="decimal" value="2,85"><span class="unit">€/mês</span></div></div>
+      <div class="field"><label>kWh faturados a 6% IVA</label><div class="inwrap"><input id="rK6" inputmode="decimal" value="206,6667"><span class="unit">kWh</span></div></div>
+      <div class="field"><label>kWh faturados a 23% IVA</label><div class="inwrap"><input id="rK23" inputmode="decimal" value="261,3333"><span class="unit">kWh</span></div></div>
+      <div class="field"><label>Dias do período</label><div class="inwrap"><input id="rDays" inputmode="decimal" value="31"><span class="unit">dias</span></div></div>
     </div>
-    <div class="stats">
-      <div class="stat"><div class="k">Consumo do inquilino</div><div class="v"><span id="sKwh">&mdash;</span> <small>kWh</small></div></div>
-      <div class="stat"><div class="k">Período medido</div><div class="v" id="sDays" style="font-size:15px">&mdash;</div></div>
-      <div class="stat"><div class="k">Preço médio da fatura</div><div class="v"><span id="sRate">&mdash;</span> <small>€/kWh</small></div></div>
-      <div class="stat"><div class="k">Peso no total faturado</div><div class="v" id="sShare">&mdash;</div></div>
-    </div>
-    <div class="altline">
-      Só energia consumida (sem custos fixos): <b id="altEnergy">&mdash;</b>
-      <span>&nbsp;·&nbsp; método usado: <span class="tag" id="methodTag">proporcional (tudo incluído)</span></span>
-    </div>
-    <div class="warnrow" id="periodWarn"></div>
   </section>
 
-  <div class="cols">
-    <!-- CSV -->
-    <section class="card">
-      <h2>1 · Consumo do inquilino</h2>
-      <p class="hint">Exporta o CSV horário do Shelly e larga-o aqui.</p>
-      <div class="drop" id="drop">
-        <input type="file" id="file" accept=".csv,text/csv" hidden>
-        <div class="big">Largar o CSV do Shelly</div>
-        <div class="small">ou clicar para escolher</div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" id="tab-split">Divisão com o inquilino</button>
+    <button class="tab" role="tab" aria-selected="false" id="tab-cmp">Comparar fornecedor</button>
+  </div>
+
+  <!-- ============ PANEL: SPLIT ============ -->
+  <div class="panel" id="panel-split">
+    <section class="card result">
+      <div class="lbl">A cobrar ao inquilino</div>
+      <div class="hero"><div class="amt" id="heroAmt">&mdash;</div><div class="cap" id="heroCap">carrega o CSV do Shelly</div></div>
+      <div class="stats">
+        <div class="stat"><div class="k">Consumo medido</div><div class="v"><span id="sKwh">&mdash;</span> <small>kWh</small></div></div>
+        <div class="stat"><div class="k">Custo do consumo (c/ IVA)</div><div class="v" id="sMetered">&mdash;</div></div>
+        <div class="stat"><div class="k">Parte dos custos fixos</div><div class="v" id="sFixed">&mdash;</div></div>
+        <div class="stat"><div class="k">Preço efetivo</div><div class="v"><span id="sEff">&mdash;</span> <small>€/kWh</small></div></div>
       </div>
+      <div class="warnrow" id="periodWarn"></div>
     </section>
 
-    <!-- INVOICE -->
     <section class="card">
-      <h2>2 · Valores da fatura</h2>
-      <p class="hint">Pré-preenchido com a fatura de junho. Ajusta a cada mês.</p>
-      <div class="field">
-        <label for="fTotal">Total da fatura</label>
-        <div class="inwrap"><input id="fTotal" inputmode="decimal" value="114,36"><span class="unit">€</span></div>
-      </div>
-      <div class="grid2">
-        <div class="field">
-          <label for="fKwh">Consumo faturado</label>
-          <div class="inwrap"><input id="fKwh" inputmode="decimal" value="468"><span class="unit">kWh</span></div>
-        </div>
-        <div class="field">
-          <label for="fDays">Dias do período</label>
-          <div class="inwrap"><input id="fDays" inputmode="decimal" value="31"><span class="unit">dias</span></div>
-        </div>
-      </div>
-      <div class="field">
-        <label for="fEnergy">Custo só de energia ativa <span title="soma das linhas de energia da fatura, sem potência/taxas">(energia+redes, s/ potência e taxas)</span></label>
-        <div class="inwrap"><input id="fEnergy" inputmode="decimal" value="84,97"><span class="unit">€</span></div>
+      <h2>1 · Consumo do inquilino (Shelly)</h2>
+      <p class="hint">Larga o CSV horário exportado do Shelly.</p>
+      <div class="drop" id="drop"><input type="file" id="file" accept=".csv,text/csv" hidden>
+        <div class="big">Largar o CSV do Shelly</div><div class="small">ou clicar para escolher</div></div>
+    </section>
+
+    <section class="card" id="detCard" style="display:none">
+      <div class="lbl" style="margin-bottom:10px">Detalhe da faturação &mdash; consumo do inquilino</div>
+      <div style="overflow-x:auto"><table><thead>
+        <tr><th>Linha</th><th>Cálculo</th><th>Valor</th></tr></thead>
+        <tbody id="detBody"></tbody></table></div>
+      <p class="note">Repartição do IVA: a mesma proporção da fatura (<span id="pctNote">&mdash;</span>) aplicada aos kWh medidos. O termo de potência e as taxas fixas (DGEG, Audiovisual) não entram aqui &mdash; são o balde "fixo" abaixo.</p>
+    </section>
+
+    <section class="card" id="fixedCard" style="display:none">
+      <h2>Custos fixos do período</h2>
+      <p class="hint">Potência + DGEG + Audiovisual. Cobrados por dia/mês, não por consumo &mdash; divide-os à parte, como acordarem.</p>
+      <div style="overflow-x:auto"><table><thead><tr><th>Linha</th><th>Cálculo</th><th>Valor c/ IVA</th></tr></thead><tbody id="fixBody"></tbody></table></div>
+      <div style="margin-top:14px">
+        <label class="lbl">Parte do inquilino nos fixos</label>
+        <div class="split"><input type="range" id="fixSplit" min="0" max="100" step="5" value="50"><span class="val" id="fixSplitVal">50% &middot; &mdash;</span></div>
       </div>
     </section>
   </div>
 
-  <!-- CHART -->
+  <!-- ============ PANEL: COMPARE ============ -->
+  <div class="panel" id="panel-cmp" hidden>
+    <section class="card">
+      <h2>Comparar com outro fornecedor</h2>
+      <p class="hint">O acesso às redes e as taxas (IEC, DGEG, Audiovisual) são regulados &mdash; iguais em todos. Os fornecedores competem no <b>preço da energia</b> e por vezes no <b>termo de potência</b>. Muda só esses e vê o total para o teu consumo real.</p>
+      <div class="cols">
+        <div class="cmpcol">
+          <h3><span class="dot" style="background:var(--muted)"></span>Fornecedor novo</h3>
+          <div class="field"><label>Preço da energia</label><div class="inwrap"><input id="nEner" inputmode="decimal" value="0,100000"><span class="unit">€/kWh</span></div></div>
+          <div class="field"><label>Potência (termo fixo)</label><div class="inwrap"><input id="nPot" inputmode="decimal" value="0,329100"><span class="unit">€/dia</span></div></div>
+          <div class="field"><label>Acesso às redes (normalmente igual)</label><div class="inwrap"><input id="nRedes" inputmode="decimal" value="0,060700"><span class="unit">€/kWh</span></div></div>
+        </div>
+        <div class="cmpcol">
+          <h3><span class="dot" style="background:var(--accent)"></span>Base de comparação</h3>
+          <div class="field"><label>Consumo mensal</label><div class="inwrap"><input id="cKwh" inputmode="decimal" value="468"><span class="unit">kWh</span></div></div>
+          <div class="field"><label>Dias no mês</label><div class="inwrap"><input id="cDays" inputmode="decimal" value="31"><span class="unit">dias</span></div></div>
+          <p class="hint" style="margin-top:4px">A repartição 6%/23% do IVA vem das tarifas atuais acima.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div id="cmpVerdict" class="verdict win"><span>Preenche os valores para comparar.</span></div>
+      <div style="overflow-x:auto;margin-top:14px"><table><thead>
+        <tr><th>Componente (mensal, c/ IVA)</th><th>Atual</th><th>Novo</th><th>Diferença</th></tr></thead>
+        <tbody id="cmpBody"></tbody></table></div>
+      <p class="note" id="cmpNote"></p>
+    </section>
+  </div>
+
   <section class="card" id="chartCard" style="display:none">
-    <div class="lbl">Consumo por dia</div>
-    <div class="chartwrap"><canvas id="chart"></canvas></div>
-    <div class="chartcap"><span id="chartFrom"></span><span id="chartTo"></span></div>
+    <div class="lbl">Consumo por dia (inquilino)</div>
+    <div style="position:relative"><canvas id="chart" style="width:100%;height:170px;display:block"></canvas></div>
+    <div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:6px"><span id="chFrom"></span><span id="chTo"></span></div>
   </section>
 
-  <!-- BREAKDOWN -->
-  <section class="card" id="breakCard" style="display:none">
-    <div class="lbl" style="margin-bottom:12px">Detalhe face à fatura</div>
-    <div style="overflow-x:auto">
-      <table>
-        <thead><tr><th>Componente</th><th>Fatura (total)</th><th>Parte do inquilino</th></tr></thead>
-        <tbody id="breakBody"></tbody>
-      </table>
-    </div>
-    <p class="note" id="breakNote"></p>
-  </section>
-
-  <footer>Uso pessoal · os valores de imposto/IVA já vêm incluídos no total e no preço médio.</footer>
+  <footer>Uso pessoal. As tarifas reguladas (acesso às redes, IEC, DGEG, Audiovisual) são iguais entre fornecedores; a energia e a potência é que variam.<br>Valores indicativos &mdash; confirma sempre contra a fatura oficial.</footer>
 </div>
 
 <script>
 (function(){
   "use strict";
   var $=function(id){return document.getElementById(id);};
-  var eur=new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR'});
-  var eur4=new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR',minimumFractionDigits:4,maximumFractionDigits:4});
+  var eur=function(n){return new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR'}).format(n);};
+  var eur4=function(n){return new Intl.NumberFormat('pt-PT',{minimumFractionDigits:4,maximumFractionDigits:4}).format(n)+' €';};
   var nf=function(n,d){return new Intl.NumberFormat('pt-PT',{minimumFractionDigits:d,maximumFractionDigits:d}).format(n);};
-  var parseNum=function(s){ if(typeof s==='number')return s; s=(''+s).replace(/[^0-9,.\-]/g,'').replace(/\./g,'').replace(',', '.'); var v=parseFloat(s); return isNaN(v)?0:v; };
+  var parseNum=function(s){ if(typeof s==='number')return s; s=(''+s).replace(/[^0-9,.\-]/g,''); if(s.indexOf(',')>-1&&s.indexOf('.')>-1)s=s.replace(/\./g,'').replace(',','.'); else if(s.indexOf(',')>-1)s=s.replace(',','.'); var v=parseFloat(s); return isNaN(v)?0:v; };
 
   var state={kWh:0,days:{},from:null,to:null,dayCount:0,loaded:false};
 
-  // ---- CSV parse: Shelly two-section export (Consumo + Total devolvido) ----
+  function rates(){
+    var k6=parseNum($('rK6').value), k23=parseNum($('rK23').value), tot=k6+k23;
+    return {ener:parseNum($('rEner').value),redes:parseNum($('rRedes').value),iec:parseNum($('rIEC').value),
+      pot:parseNum($('rPot').value),dgeg:parseNum($('rDgeg').value),cav:parseNum($('rCav').value),
+      k6:k6,k23:k23,p6:tot>0?k6/tot:0,p23:tot>0?k23/tot:0,days:parseNum($('rDays').value)};
+  }
+
+  // Bill for `kwh` metered energy. includeFixed adds potência(days)+DGEG+CAV.
+  function computeBill(kwh,days,r,includeFixed){
+    var e6=kwh*r.p6, e23=kwh*r.p23;
+    var ar23=e23*r.redes, ar6=e6*r.redes, pe23=e23*r.ener, pe6=e6*r.ener, iec=kwh*r.iec;
+    var b23=ar23+pe23+iec, b6=ar6+pe6;
+    var pot=0,dgeg=0,cav=0;
+    if(includeFixed){ pot=days*r.pot; dgeg=r.dgeg; cav=r.cav; b23+=pot+dgeg; b6+=cav; }
+    var iva23=b23*0.23, iva6=b6*0.06, total=b23+b6+iva23+iva6;
+    return {e6:e6,e23:e23,ar23:ar23,ar6:ar6,pe23:pe23,pe6:pe6,iec:iec,
+      pot:pot,dgeg:dgeg,cav:cav,b23:b23,b6:b6,iva23:iva23,iva6:iva6,total:total};
+  }
+
+  // ---------- TENANT SPLIT ----------
+  function renderSplit(){
+    if(!state.loaded) return;
+    var r=rates(), tk=state.kWh, days=r.days;
+    var m=computeBill(tk,days,r,false); // metered only
+    // detalhe table
+    var rows=[
+      ['section','ENERGIA ATIVA','',''],
+      ['','Acesso às redes (23% IVA)', nf(m.e23,4)+' kWh × '+nf(r.redes,6), m.ar23],
+      ['','Acesso às redes (6% IVA)', nf(m.e6,4)+' kWh × '+nf(r.redes,6), m.ar6],
+      ['','Preço da energia (23% IVA)', nf(m.e23,4)+' kWh × '+nf(r.ener,6), m.pe23],
+      ['','Preço da energia (6% IVA)', nf(m.e6,4)+' kWh × '+nf(r.ener,6), m.pe6],
+      ['section','TAXAS E IMPOSTOS','',''],
+      ['','Taxa IEC (23% IVA)', nf(tk,4)+' kWh × '+nf(r.iec,6), m.iec],
+      ['section','TOTAIS','',''],
+      ['','Total sem IVA','', m.b23+m.b6],
+      ['','IVA 23%','s/ '+eur(m.b23), m.iva23],
+      ['','IVA 6%','s/ '+eur(m.b6), m.iva6],
+      ['grand','TOTAL COM IVA','', m.total]
+    ];
+    var html='';
+    rows.forEach(function(row){
+      if(row[0]==='section'){ html+='<tr class="section"><td colspan="3">'+row[1]+'</td></tr>'; return; }
+      var cls=row[0]==='grand'?' class="grand"':'';
+      html+='<tr'+cls+'><td>'+row[1]+'</td><td class="calc">'+row[2]+'</td><td class="n">'+(row[0]==='grand'?eur(row[3]):eur4(row[3]))+'</td></tr>';
+    });
+    $('detBody').innerHTML=html;
+    $('pctNote').textContent=nf(r.p6*100,2)+'% a 6% / '+nf(r.p23*100,2)+'% a 23%';
+
+    // fixed bucket (period)
+    var potCom=(days*r.pot)*1.23, dgegCom=r.dgeg*1.23, cavCom=r.cav*1.06, fixTot=potCom+dgegCom+cavCom;
+    $('fixBody').innerHTML=
+      '<tr><td>Potência</td><td class="calc">'+nf(days,0)+' dias × '+nf(r.pot,6)+' + 23%</td><td class="n">'+eur(potCom)+'</td></tr>'+
+      '<tr><td>Taxa DGEG</td><td class="calc">'+eur(r.dgeg)+' + 23%</td><td class="n">'+eur(dgegCom)+'</td></tr>'+
+      '<tr><td>Contrib. Audiovisual</td><td class="calc">'+eur(r.cav)+' + 6%</td><td class="n">'+eur(cavCom)+'</td></tr>'+
+      '<tr class="grand"><td>Total custos fixos</td><td></td><td class="n">'+eur(fixTot)+'</td></tr>';
+    var split=parseNum($('fixSplit').value)/100, fixShare=fixTot*split;
+    $('fixSplitVal').innerHTML=nf(split*100,0)+'% &middot; '+eur(fixShare);
+
+    var grand=m.total+fixShare;
+    $('heroAmt').textContent=eur(grand);
+    $('heroCap').textContent='consumo '+eur(m.total)+' + fixos '+eur(fixShare);
+    $('sKwh').textContent=nf(tk,3);
+    $('sMetered').textContent=eur(m.total);
+    $('sFixed').textContent=eur(fixShare);
+    $('sEff').textContent=nf(tk>0?m.total/tk:0,5);
+
+    var w=$('periodWarn');
+    if(state.dayCount<days-1){ w.style.display='block';
+      w.textContent='O CSV cobre '+state.dayCount+' dia(s) mas o período fixo assume '+nf(days,0)+' dias. Para o total fechar certo, usa o CSV do período de faturação completo.'; }
+    else w.style.display='none';
+  }
+
+  // ---------- COMPARISON ----------
+  function renderCompare(){
+    var r=rates();
+    var kwh=parseNum($('cKwh').value), days=parseNum($('cDays').value);
+    var rNew=Object.assign({},r,{ener:parseNum($('nEner').value),pot:parseNum($('nPot').value),redes:parseNum($('nRedes').value)});
+    var cur=computeBill(kwh,days,r,true), nw=computeBill(kwh,days,rNew,true);
+    var rowsHtml='';
+    function line(label,a,b){ var d=b-a; var col=d<0?'var(--good)':(d>0?'var(--crit)':'var(--muted)');
+      rowsHtml+='<tr><td>'+label+'</td><td class="n">'+eur(a)+'</td><td class="n">'+eur(b)+'</td><td class="n" style="color:'+col+'">'+(d>0?'+':'')+eur(d)+'</td></tr>'; }
+    var curEnergia=cur.ar23+cur.ar6+cur.pe23+cur.pe6, nwEnergia=nw.ar23+nw.ar6+nw.pe23+nw.pe6;
+    line('Energia + acesso às redes', curEnergia*1, nwEnergia*1);
+    line('Potência (termo fixo, c/ IVA)', cur.pot*1.23, nw.pot*1.23);
+    line('Taxas (IEC+DGEG+Audiovisual)', cur.iec+cur.dgeg*1.23+cur.cav*1.06, nw.iec+nw.dgeg*1.23+nw.cav*1.06);
+    line('IVA', cur.iva23+cur.iva6, nw.iva23+nw.iva6);
+    rowsHtml+='<tr class="grand"><td>TOTAL MENSAL</td><td class="n">'+eur(cur.total)+'</td><td class="n">'+eur(nw.total)+'</td><td class="n" style="color:'+((nw.total-cur.total)<0?'var(--good)':'var(--crit)')+'">'+((nw.total-cur.total)>0?'+':'')+eur(nw.total-cur.total)+'</td></tr>';
+    $('cmpBody').innerHTML=rowsHtml;
+
+    var diff=nw.total-cur.total, yr=diff*12;
+    var v=$('cmpVerdict');
+    if(diff<-0.005){ v.className='verdict win';
+      v.innerHTML='<span class="big">Poupas '+eur(-diff)+'/mês</span><span>('+eur(-yr)+'/ano). Efetivo '+nf(nw.total/kwh,4)+' vs '+nf(cur.total/kwh,4)+' €/kWh. Vale a pena mudar.</span>'; }
+    else if(diff>0.005){ v.className='verdict lose';
+      v.innerHTML='<span class="big">Ficas a pagar +'+eur(diff)+'/mês</span><span>('+eur(yr)+'/ano mais caro). Não compensa.</span>'; }
+    else { v.className='verdict win'; v.innerHTML='<span class="big">Praticamente igual</span><span>diferença desprezável.</span>'; }
+    $('cmpNote').innerHTML='Comparação para '+nf(kwh,0)+' kWh/mês em '+nf(days,0)+' dias, tudo com IVA. Efetivo atual <b>'+nf(cur.total/kwh,4)+'</b> €/kWh, novo <b>'+nf(nw.total/kwh,4)+'</b> €/kWh.';
+  }
+
+  function renderAll(){ renderSplit(); renderCompare(); }
+
+  // ---------- CSV ----------
   function parseShelly(text){
     text=text.replace(/^﻿/,'');
     var lines=text.split(/\r?\n/), section=null, total=0, days={}, from=null, to=null;
@@ -234,134 +343,65 @@
       var raw=lines[i], low=raw.trim().toLowerCase();
       if(!low) continue;
       if(low.indexOf('consumo')===0){section='consumo';continue;}
-      if(low.indexOf('total devolvido')===0||low.indexOf('devolvid')===0){section='devolvido';continue;}
-      if(low.indexOf('hora')===0||low.indexOf('data')===0){continue;}
-      var m=raw.match(reRow);
-      if(!m) continue;
-      if(section!=='consumo') continue;          // only count consumption, never returned energy
-      // Shelly exports dot-decimal (e.g. "1427.72"). Handle comma-decimal + EU thousands defensively.
-      var s=m[3].replace(/\s/g,''), wh;
-      if(s.indexOf(',')>-1 && s.indexOf('.')>-1){ wh=parseFloat(s.replace(/\./g,'').replace(',','.')); } // 1.234,56
-      else if(s.indexOf(',')>-1){ wh=parseFloat(s.replace(',','.')); }                                    // 156,52
-      else { wh=parseFloat(s); }                                                                          // 156.52
-      var day=m[1];
-      if(isNaN(wh)) continue;
-      total+=wh; days[day]=(days[day]||0)+wh;
-      var stamp=day+' '+m[2];
-      if(from===null) from=stamp; to=stamp;
+      if(low.indexOf('total devolvido')===0||low.indexOf('devolvid')===0){section='dev';continue;}
+      if(low.indexOf('hora')===0||low.indexOf('data')===0)continue;
+      var m=raw.match(reRow); if(!m||section!=='consumo')continue;
+      var s=m[3].replace(/\s/g,''),wh;
+      if(s.indexOf(',')>-1&&s.indexOf('.')>-1)wh=parseFloat(s.replace(/\./g,'').replace(',','.'));
+      else if(s.indexOf(',')>-1)wh=parseFloat(s.replace(',','.'));
+      else wh=parseFloat(s);
+      if(isNaN(wh))continue;
+      total+=wh; days[m[1]]=(days[m[1]]||0)+wh; if(from===null)from=m[1]+' '+m[2]; to=m[1]+' '+m[2];
     }
     return {kWh:total/1000,days:days,from:from,to:to,dayCount:Object.keys(days).length};
   }
-
   function loadText(text,name){
-    var r=parseShelly(text);
-    if(r.dayCount===0){ flagError('Não encontrei linhas de consumo nesse CSV. É o export horário do Shelly?'); return; }
-    state.kWh=r.kWh; state.days=r.days; state.from=r.from; state.to=r.to; state.dayCount=r.dayCount; state.loaded=true;
+    var rp=parseShelly(text);
+    if(rp.dayCount===0){ $('drop').innerHTML='<div class="big" style="color:var(--crit)">CSV sem linhas de consumo. É o export horário do Shelly?</div><div class="small">clica para tentar outro</div>'; return; }
+    state.kWh=rp.kWh; state.days=rp.days; state.from=rp.from; state.to=rp.to; state.dayCount=rp.dayCount; state.loaded=true;
     var d=$('drop'); d.classList.add('loaded');
-    d.innerHTML='<div class="filerow"><span class="chk">✓</span><b>'+ (name||'CSV carregado') +'</b></div>'+
-      '<div class="filemeta">'+ nf(r.kWh,3)+' kWh · '+ r.dayCount +' dia(s) · '+ (r.from||'') +' → '+ (r.to||'') +'</div>';
-    $('chartCard').style.display=''; $('breakCard').style.display='';
-    compute(); drawChart();
-  }
-  function flagError(msg){ var d=$('drop'); d.classList.remove('loaded'); d.innerHTML='<div class="big" style="color:var(--crit)">'+msg+'</div><div class="small">clica para tentar outro ficheiro</div>'; }
-
-  // ---- compute ----
-  function compute(){
-    if(!state.loaded) return;
-    var total=parseNum($('fTotal').value), kwh=parseNum($('fKwh').value),
-        days=parseNum($('fDays').value), energy=parseNum($('fEnergy').value);
-    var tk=state.kWh;
-    var blendedRate= kwh>0 ? total/kwh : 0;
-    var energyRate = kwh>0 ? energy/kwh : 0;
-    var share      = kwh>0 ? tk/kwh : 0;
-    var chargeBlend= tk*blendedRate;
-    var chargeEnergy=tk*energyRate;
-    var fixedTotal = total-energy;
-    var fixedShare = share*fixedTotal;
-    var energyShare= tk*energyRate;
-
-    $('heroAmt').textContent=eur.format(chargeBlend);
-    $('heroCap').textContent='pelos '+nf(tk,3)+' kWh medidos';
-    $('sKwh').textContent=nf(tk,3);
-    $('sDays').textContent=state.dayCount+ (state.dayCount===1?' dia':' dias');
-    $('sRate').textContent=nf(blendedRate,4);
-    $('sShare').textContent=nf(share*100,1)+' %';
-    $('altEnergy').textContent=eur.format(chargeEnergy);
-
-    // period sanity note
-    var w=$('periodWarn');
-    if(state.dayCount< days-1){
-      w.style.display='block';
-      w.textContent='Nota: o CSV cobre '+state.dayCount+' dia(s), mas o período faturado tem '+nf(days,0)+'. O "peso no total" só é comparável quando o CSV cobre o mesmo período da fatura.';
-    } else { w.style.display='none'; }
-
-    // breakdown table
-    var rows=[
-      ['Energia ativa (energia + acesso às redes)', energy, energyShare, false],
-      ['Custos fixos (potência + taxas + IVA)', fixedTotal, fixedShare, false],
-      ['Total', total, chargeBlend, true]
-    ];
-    var html='';
-    for(var i=0;i<rows.length;i++){
-      var r=rows[i];
-      html+='<tr'+(r[3]?' class="tot"':'')+'><td>'+r[0]+'</td><td class="n">'+eur.format(r[1])+'</td><td class="n'+(r[3]?' share':'')+'">'+eur.format(r[2])+'</td></tr>';
-    }
-    $('breakBody').innerHTML=html;
-    $('breakNote').innerHTML='Método <b>proporcional</b>: o inquilino paga a sua fatia ('+nf(share*100,1)+'%) de <i>tudo</i> — energia mais a parte proporcional da potência, taxas e IVA. '+
-      'Em alternativa, "só energia consumida" ('+eur.format(chargeEnergy)+') cobra apenas a energia que ele gastou e tu absorves os custos fixos.';
+    d.innerHTML='<div class="filerow"><span class="chk">✓</span><b>'+(name||'CSV')+'</b></div><div class="filemeta">'+nf(rp.kWh,3)+' kWh · '+rp.dayCount+' dia(s) · '+rp.from+' → '+rp.to+'</div>';
+    $('detCard').style.display=''; $('fixedCard').style.display=''; $('chartCard').style.display='';
+    renderSplit(); drawChart();
   }
 
-  // ---- chart ----
+  // ---------- chart ----------
   function drawChart(){
-    var c=$('chart'), dpr=window.devicePixelRatio||1;
-    var w=c.clientWidth, h=180; c.width=w*dpr; c.height=h*dpr;
-    var ctx=c.getContext('2d'); ctx.scale(dpr,dpr); ctx.clearRect(0,0,w,h);
-    var keys=Object.keys(state.days).sort(function(a,b){ return toDate(a)-toDate(b); });
-    if(!keys.length) return;
-    var vals=keys.map(function(k){return state.days[k]/1000;});
-    var max=Math.max.apply(null,vals)||1;
-    var css=getComputedStyle(document.documentElement);
-    var accent=css.getPropertyValue('--accent').trim();
-    var line=css.getPropertyValue('--line').trim();
-    var muted=css.getPropertyValue('--muted').trim();
-    var padB=26, padT=18, padX=6;
-    // grid
-    ctx.strokeStyle=line; ctx.lineWidth=1;
-    for(var g=0;g<=2;g++){ var y=padT+(h-padT-padB)*g/2; ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
-    var n=keys.length, gap=Math.min(18,w*0.04);
-    var bw=(w-padX*2-gap*(n-1))/n;
-    ctx.font='11px '+css.getPropertyValue('--sans');
-    for(var i=0;i<n;i++){
-      var x=padX+i*(bw+gap), bh=(h-padT-padB)*(vals[i]/max);
-      var y0=h-padB-bh;
-      ctx.fillStyle=accent; ctx.globalAlpha=0.9;
-      roundRect(ctx,x,y0,bw,bh,4); ctx.fill(); ctx.globalAlpha=1;
-      // value
-      ctx.fillStyle=muted; ctx.textAlign='center';
-      ctx.fillText(nf(vals[i],2), x+bw/2, y0-5);
-      // day label (dd/mm)
-      var dd=keys[i].slice(0,5);
-      ctx.fillText(dd, x+bw/2, h-9);
-    }
-    $('chartFrom').textContent=state.from||''; $('chartTo').textContent='pico '+nf(max,2)+' kWh/dia';
+    var c=$('chart'),dpr=window.devicePixelRatio||1,w=c.clientWidth,h=170;
+    c.width=w*dpr;c.height=h*dpr;var ctx=c.getContext('2d');ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);
+    var keys=Object.keys(state.days).sort(function(a,b){return toDate(a)-toDate(b);}); if(!keys.length)return;
+    var vals=keys.map(function(k){return state.days[k]/1000;}),max=Math.max.apply(null,vals)||1;
+    var css=getComputedStyle(document.documentElement),accent=css.getPropertyValue('--accent').trim(),line=css.getPropertyValue('--line').trim(),muted=css.getPropertyValue('--muted').trim();
+    var padB=24,padT=16,padX=6;ctx.strokeStyle=line;ctx.lineWidth=1;
+    for(var g=0;g<=2;g++){var y=padT+(h-padT-padB)*g/2;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();}
+    var n=keys.length,gap=Math.min(16,w*0.035),bw=(w-padX*2-gap*(n-1))/n;ctx.font='11px '+css.getPropertyValue('--sans');
+    for(var i=0;i<n;i++){var x=padX+i*(bw+gap),bh=(h-padT-padB)*(vals[i]/max),y0=h-padB-bh;
+      ctx.fillStyle=accent;ctx.globalAlpha=.9;rr(ctx,x,y0,bw,bh,4);ctx.fill();ctx.globalAlpha=1;
+      ctx.fillStyle=muted;ctx.textAlign='center';ctx.fillText(nf(vals[i],2),x+bw/2,y0-5);ctx.fillText(keys[i].slice(0,5),x+bw/2,h-8);}
+    $('chFrom').textContent=state.from||'';$('chTo').textContent='pico '+nf(max,2)+' kWh/dia';
   }
-  function roundRect(ctx,x,y,w,h,r){ r=Math.min(r,w/2,h/2); if(h<=0){return;} ctx.beginPath();
-    ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
-    ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
-  function toDate(s){ var p=s.split('/'); return new Date(+p[2],+p[1]-1,+p[0]); }
+  function rr(ctx,x,y,w,h,r){r=Math.min(r,w/2,h/2);if(h<=0)return;ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+  function toDate(s){var p=s.split('/');return new Date(+p[2],+p[1]-1,+p[0]);}
 
-  // ---- wiring ----
-  var drop=$('drop'), file=$('file');
+  // ---------- wiring ----------
+  var drop=$('drop'),file=$('file');
   drop.addEventListener('click',function(){file.click();});
   drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('over');});
   drop.addEventListener('dragleave',function(){drop.classList.remove('over');});
-  drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('over');
-    var f=e.dataTransfer.files[0]; if(f) read(f);});
-  file.addEventListener('change',function(e){var f=e.target.files[0]; if(f) read(f);});
-  function read(f){ var rd=new FileReader(); rd.onload=function(){loadText(rd.result,f.name);}; rd.readAsText(f); }
-  ['fTotal','fKwh','fDays','fEnergy'].forEach(function(id){ $(id).addEventListener('input',compute); });
-  window.addEventListener('resize',function(){ if(state.loaded) drawChart(); });
-  var mq=window.matchMedia('(prefers-color-scheme:dark)'); if(mq.addEventListener) mq.addEventListener('change',function(){if(state.loaded)drawChart();});
+  drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('over');var f=e.dataTransfer.files[0];if(f)rd(f);});
+  file.addEventListener('change',function(e){var f=e.target.files[0];if(f)rd(f);});
+  function rd(f){var r=new FileReader();r.onload=function(){loadText(r.result,f.name);};r.readAsText(f);}
+  ['rEner','rRedes','rIEC','rPot','rDgeg','rCav','rK6','rK23','rDays'].forEach(function(id){$(id).addEventListener('input',renderAll);});
+  ['nEner','nPot','nRedes','cKwh','cDays'].forEach(function(id){$(id).addEventListener('input',renderCompare);});
+  $('fixSplit').addEventListener('input',renderSplit);
+  function tab(sel){ var s=sel==='split';
+    $('tab-split').setAttribute('aria-selected',s);$('tab-cmp').setAttribute('aria-selected',!s);
+    $('panel-split').hidden=!s;$('panel-cmp').hidden=s; if(!s)renderCompare(); }
+  $('tab-split').addEventListener('click',function(){tab('split');});
+  $('tab-cmp').addEventListener('click',function(){tab('cmp');});
+  window.addEventListener('resize',function(){if(state.loaded)drawChart();});
+  var mq=window.matchMedia('(prefers-color-scheme:dark)');if(mq.addEventListener)mq.addEventListener('change',function(){if(state.loaded)drawChart();});
+  renderCompare();
 })();
 </script>
 </body>
