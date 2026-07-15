@@ -44,6 +44,9 @@
   .tab{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:var(--sans);}
   .tab[aria-selected="true"]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-line);}
   .panel[hidden]{display:none;}
+  #emailBtn{border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent);border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:var(--sans);}
+  #emailBtn:hover:not(:disabled){background:var(--accent);color:#fff;}
+  #emailBtn:disabled{opacity:.55;cursor:default;}
 
   /* result */
   .result{background:linear-gradient(180deg,var(--accent-soft),transparent 60%),var(--surface);border-color:var(--accent-line);}
@@ -155,6 +158,10 @@
         <div class="stat"><div class="k">Preço efetivo</div><div class="v"><span id="sEff">&mdash;</span> <small>€/kWh</small></div></div>
       </div>
       <div class="warnrow" id="periodWarn"></div>
+      <div style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button id="emailBtn" type="button">📧 Preparar email para mim</button>
+        <span id="emailStatus" style="font-size:12.5px;color:var(--muted)"></span>
+      </div>
     </section>
 
     <section class="card">
@@ -364,6 +371,7 @@
     var rp=parseShelly(text);
     if(rp.dayCount===0){ fileErr('CSV sem linhas de consumo. É o export horário do Shelly?'); return; }
     state.kWh=rp.kWh; state.days=rp.days; state.from=rp.from; state.to=rp.to; state.dayCount=rp.dayCount; state.loaded=true;
+    state.raw=text; state.name=name||'consumo.csv';
     var d=$('drop'); d.classList.add('loaded');
     d.innerHTML='<div class="filerow"><span class="chk">✓</span><b>'+esc(name||'CSV')+'</b></div><div class="filemeta">'+nf(rp.kWh,3)+' kWh · '+rp.dayCount+' dia(s) · '+esc(rp.from||'')+' → '+esc(rp.to||'')+'</div>';
     $('detCard').style.display=''; $('fixedCard').style.display=''; $('chartCard').style.display='';
@@ -408,6 +416,61 @@
   ['rEner','rRedes','rIEC','rPot','rDgeg','rCav','rK6','rK23','rDays'].forEach(function(id){$(id).addEventListener('input',renderAll);});
   ['nEner','nPot','nRedes','cKwh','cDays'].forEach(function(id){$(id).addEventListener('input',renderCompare);});
   $('fixSplit').addEventListener('input',renderSplit);
+
+  // ---------- email ----------
+  var MAIL_URL='https://luz-api.diogoandrade.com/email';
+  function emailSummaryHtml(){
+    var r=rates(),tk=state.kWh,days=r.days,m=computeBill(tk,days,r,false);
+    var potCom=(days*r.pot)*1.23,dgegCom=r.dgeg*1.23,cavCom=r.cav*1.06,fixTot=potCom+dgegCom+cavCom;
+    var split=parseNum($('fixSplit').value)/100,fixShare=fixTot*split,grand=m.total+fixShare;
+    var A='#C6790C',INK='#171C22',MUT='#5A6672',LINE='#e2e7ec',BG='#f4f6f8';
+    var e2=function(n){return new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR'}).format(n);};
+    var e4=function(n){return new Intl.NumberFormat('pt-PT',{minimumFractionDigits:4,maximumFractionDigits:4}).format(n)+' €';};
+    function tr(l,c,v,b){return '<tr><td style="padding:6px 8px;border-bottom:1px solid '+LINE+';font-size:13px'+(b?';font-weight:700':'')+'">'+l+'</td><td style="padding:6px 8px;border-bottom:1px solid '+LINE+';font-size:11px;color:'+MUT+'">'+(c||'')+'</td><td style="padding:6px 8px;border-bottom:1px solid '+LINE+';text-align:right;font-size:13px'+(b?';font-weight:700;color:'+A:'')+'">'+v+'</td></tr>';}
+    function sec(t){return '<tr><td colspan="3" style="padding:7px 8px;background:'+BG+';font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:'+MUT+';font-weight:700">'+t+'</td></tr>';}
+    var det=sec('Energia ativa')+
+      tr('Acesso às redes (23% IVA)',nf(m.e23,4)+' kWh × '+nf(r.redes,6),e4(m.ar23))+
+      tr('Acesso às redes (6% IVA)',nf(m.e6,4)+' kWh × '+nf(r.redes,6),e4(m.ar6))+
+      tr('Preço da energia (23% IVA)',nf(m.e23,4)+' kWh × '+nf(r.ener,6),e4(m.pe23))+
+      tr('Preço da energia (6% IVA)',nf(m.e6,4)+' kWh × '+nf(r.ener,6),e4(m.pe6))+
+      sec('Taxas e impostos')+
+      tr('Taxa IEC (23% IVA)',nf(tk,4)+' kWh × '+nf(r.iec,6),e4(m.iec))+
+      sec('Totais')+
+      tr('Total sem IVA','',e2(m.b23+m.b6))+
+      tr('IVA 23%','s/ '+e2(m.b23),e2(m.iva23))+
+      tr('IVA 6%','s/ '+e2(m.b6),e2(m.iva6))+
+      tr('TOTAL do consumo','',e2(m.total),1);
+    var fix=tr('Potência',nf(days,0)+' dias × '+nf(r.pot,6)+' +23%',e2(potCom))+
+      tr('Taxa DGEG',e2(r.dgeg)+' +23%',e2(dgegCom))+
+      tr('Contrib. Audiovisual',e2(r.cav)+' +6%',e2(cavCom))+
+      tr('Total custos fixos','',e2(fixTot),1)+
+      tr('Parte do inquilino ('+nf(split*100,0)+'%)','',e2(fixShare),1);
+    return '<div style="font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:600px;margin:0 auto;background:#fff;color:'+INK+'">'+
+      '<div style="background:'+INK+';padding:18px 22px;border-radius:12px 12px 0 0"><span style="color:#E9A62C;font-size:18px;font-weight:700">&#9889; Conta de Luz</span><div style="color:#9aa7b4;font-size:12px;margin-top:2px">Divisão com o inquilino</div></div>'+
+      '<div style="border:1px solid '+LINE+';border-top:none;border-radius:0 0 12px 12px;padding:20px 22px">'+
+      '<div style="font-size:12px;color:'+MUT+'">Consumo medido &middot; '+esc(state.from||'')+' a '+esc(state.to||'')+'</div>'+
+      '<div style="font-size:32px;font-weight:700;color:'+A+';margin:2px 0">'+e2(grand)+'</div>'+
+      '<div style="font-size:12px;color:'+MUT+'">'+nf(tk,3)+' kWh &middot; consumo '+e2(m.total)+' + fixos '+e2(fixShare)+' &middot; efetivo '+nf(tk>0?m.total/tk:0,5)+' &euro;/kWh</div>'+
+      '<table style="width:100%;border-collapse:collapse;margin-top:16px">'+det+'</table>'+
+      '<div style="font-size:10px;color:'+MUT+';text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin:18px 0 6px">Custos fixos do período</div>'+
+      '<table style="width:100%;border-collapse:collapse">'+fix+'</table>'+
+      '<p style="font-size:12px;color:#8a97b4;margin-top:16px">CSV original do Shelly em anexo. Valores indicativos &mdash; confirma contra a fatura oficial.</p>'+
+      '</div></div>';
+  }
+  function emailPrepare(){
+    var st=$('emailStatus');
+    if(!state.loaded){ st.style.color='var(--crit)'; st.textContent='Carrega primeiro o CSV do Shelly.'; return; }
+    var btn=$('emailBtn'); btn.disabled=true; st.style.color='var(--muted)'; st.textContent='A enviar…';
+    fetch(MAIL_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      subject:'Divisão da conta de luz — '+nf(state.kWh,3)+' kWh',
+      html:emailSummaryHtml(), csv_name:state.name||'consumo.csv', csv_content:state.raw||''})})
+    .then(function(res){return res.json().then(function(j){return {ok:res.ok,j:j};});})
+    .then(function(o){ btn.disabled=false;
+      if(o.ok&&o.j.ok){ st.style.color='var(--good)'; st.textContent='✓ Enviado para o teu Gmail. Revê e reenvia ao inquilino.'; }
+      else { st.style.color='var(--crit)'; st.textContent='Não deu: '+((o.j&&o.j.error)||'erro'); } })
+    .catch(function(e){ btn.disabled=false; st.style.color='var(--crit)'; st.textContent='Erro de rede: '+e.message; });
+  }
+  $('emailBtn').addEventListener('click',emailPrepare);
   function tab(sel){ var s=sel==='split';
     $('tab-split').setAttribute('aria-selected',s);$('tab-cmp').setAttribute('aria-selected',!s);
     $('panel-split').hidden=!s;$('panel-cmp').hidden=s; if(!s)renderCompare(); }
