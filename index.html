@@ -224,16 +224,28 @@
   <!-- ============ PANEL: MERCADO 6,9 kVA ============ -->
   <div class="panel" id="panel-mkt" hidden>
     <section class="card">
-      <h2>Mercado &mdash; 6,9 kVA, tarifa simples</h2>
-      <p class="hint">Preços de <b>energia</b> e <b>potência</b> a 6,9 kVA recolhidos dos fornecedores (APIs próprias, fichas padronizadas ERSE, PDFs oficiais). Valores <b>sem IVA</b>. As tarifas reguladas (acesso às redes, IEC, DGEG, Audiovisual) são iguais em todos &mdash; só a energia e a potência variam. Ordenado pelo custo estimado para o teu consumo. Carrega <b>Usar</b> para levar um fornecedor ao comparador detalhado.</p>
+      <h2>Mercado &mdash; tarifa simples</h2>
+      <p class="hint">Preços de <b>energia</b> e <b>potência</b>, por potência contratada, recolhidos dos fornecedores (APIs próprias, fichas padronizadas ERSE, PDFs oficiais). Valores <b>sem IVA</b>. As tarifas reguladas (acesso às redes, IEC, DGEG, Audiovisual) são iguais em todos &mdash; só a energia e a potência variam. Ordenado pelo custo estimado para o teu consumo. Carrega <b>Usar</b> para levar um fornecedor ao comparador detalhado.</p>
       <div class="fgrid">
         <div class="field"><label>Consumo mensal</label><div class="inwrap"><input id="mKwh" inputmode="decimal" value="468"><span class="unit">kWh</span></div></div>
         <div class="field"><label>Dias no mês</label><div class="inwrap"><input id="mDays" inputmode="decimal" value="30"><span class="unit">dias</span></div></div>
+        <div class="field"><label>Potência contratada</label><div class="inwrap"><select id="mPot">
+          <option value="1.15">1,15 kVA</option>
+          <option value="2.3">2,3 kVA</option>
+          <option value="3.45">3,45 kVA</option>
+          <option value="4.6">4,6 kVA</option>
+          <option value="5.75">5,75 kVA</option>
+          <option value="6.9" selected>6,9 kVA</option>
+          <option value="10.35">10,35 kVA</option>
+          <option value="13.8">13,8 kVA</option>
+          <option value="17.25">17,25 kVA</option>
+          <option value="20.7">20,7 kVA</option>
+        </select></div></div>
       </div>
       <div style="overflow-x:auto;margin-top:6px"><table>
         <thead><tr><th>Fornecedor &middot; plano</th><th>&asymp; &euro;/mês</th><th>Energia</th><th>Potência</th><th>Condições</th><th></th></tr></thead>
         <tbody id="mktBody"></tbody></table></div>
-      <p class="note">Estimativa <b>com IVA a 6,9 kVA</b> para o consumo indicado, com as tarifas reguladas de 2026 incluídas (a potência tem IVA a 6% por ser &le; 6,9 kVA). Independente da tua fatura atual. Muitos preços dependem de condições (débito direto, fatura eletrónica, adesão a clube, pacote telecom) ou já incluem desconto promocional &mdash; vê a coluna <b>Condições</b> e confirma sempre na ficha oficial. <span id="mktUpd"></span></p>
+      <p class="note">Estimativa <b>com IVA</b> para a potência contratada e consumo indicados, com as tarifas reguladas de 2026 incluídas (a potência tem IVA a 6% até 6,9 kVA; acima disso, 23%). Independente da tua fatura atual. Muitos preços dependem de condições (débito direto, fatura eletrónica, adesão a clube, pacote telecom) ou já incluem desconto promocional &mdash; vê a coluna <b>Condições</b> e confirma sempre na ficha oficial. <span id="mktUpd"></span></p>
     </section>
   </div>
 
@@ -509,14 +521,31 @@
     {n:'Nossa Energia · Digital',e:0.1749,p:0.6319,c:'fixo 12m; online, DD + fatura elet.'},
     {n:'Nabalia · Tarifa Fixa',e:0.19013,p:0.3436,c:'fixo anual'}
   ];
+  var ALL_OFFERS=[];
+  function mapOfferToRow(o){
+    return { n: o.comercializador + (o.plano ? ' · ' + o.plano : ''),
+      e: (o.energia_efetiva_eur_kwh!=null?o.energia_efetiva_eur_kwh:o.energia_base_eur_kwh),
+      p: (o.potencia_efetiva_eur_dia!=null?o.potencia_efetiva_eur_dia:o.potencia_base_eur_dia),
+      c: (o.condicoes||'') + (o.divergence_flag==='promo_or_stale'?' · (ERSE difere)':'') };
+  }
+  function buildMarketForPower(kva){
+    MARKET = ALL_OFFERS.filter(function(o){ return o.potencia_kva===kva; })
+      .map(mapOfferToRow)
+      .filter(function(m){ return m.e>0 && m.p>0; });
+  }
   function applyTariffs(data){
     if(!data || !Array.isArray(data.offers) || !data.offers.length) return;
-    MARKET = data.offers.map(function(o){
-      return { n: o.comercializador + (o.plano ? ' · ' + o.plano : ''),
-        e: (o.energia_efetiva_eur_kwh!=null?o.energia_efetiva_eur_kwh:o.energia_base_eur_kwh),
-        p: (o.potencia_efetiva_eur_dia!=null?o.potencia_efetiva_eur_dia:o.potencia_base_eur_dia),
-        c: (o.condicoes||'') + (o.divergence_flag==='promo_or_stale'?' · (ERSE difere)':'') };
-    }).filter(function(m){ return m.e>0 && m.p>0; });
+    ALL_OFFERS = data.offers;
+    if(Array.isArray(data.potencias) && data.potencias.length){
+      var potSel=$('mPot');
+      var prev=parseFloat(potSel.value)||6.9;
+      var keep=data.potencias.indexOf(prev)!==-1?prev:6.9;
+      potSel.innerHTML=data.potencias.map(function(k){
+        return '<option value="'+k+'"'+(k===keep?' selected':'')+'>'+String(k).replace('.',',')+' kVA</option>';
+      }).join('');
+      potSel.value=String(keep);
+    }
+    buildMarketForPower(parseFloat($('mPot').value)||6.9);
     window.__tariffsMeta = { at: data.generated_at, stale: data.stale };
   }
   fetch('tariffs.json',{cache:'no-store'}).then(function(r){return r.json();})
@@ -526,15 +555,18 @@
   // Regulado 2026 (sem IVA): redes 0,0607 €/kWh, IEC 0,001 €/kWh, DGEG 0,07 €/mês, CAV 2,85 €/mês.
   // IVA: potência + CAV a 6% (potência contratada <= 6,9 kVA); energia + redes + IEC + DGEG a 23%.
   var MKT_REG={redes:0.0607,iec:0.001,dgeg:0.07,cav:2.85};
-  function marketBill(kwh,days,ener,pot){
+  function marketBill(kwh,days,ener,pot,kva){
     var b23=kwh*(ener+MKT_REG.redes)+kwh*MKT_REG.iec+MKT_REG.dgeg;
-    var b6=days*pot+MKT_REG.cav;
+    var potAt6=kva<=6.9;
+    var b6=MKT_REG.cav + (potAt6?days*pot:0);
+    if(!potAt6) b23+=days*pot;
     return b23*1.23+b6*1.06;
   }
   function renderMarket(){
     var kwh=parseNum($('mKwh').value), days=parseNum($('mDays').value);
+    var kva=parseFloat($('mPot').value)||6.9;
     var rows=MARKET.map(function(m){
-      return {m:m,total:marketBill(kwh,days,m.e,m.p)};
+      return {m:m,total:marketBill(kwh,days,m.e,m.p,kva)};
     }).sort(function(a,b){return a.total-b.total;});
     $('mktBody').innerHTML=rows.map(function(x,i){
       var win=i===0?' style="color:var(--good);font-weight:700"':'';
@@ -561,6 +593,10 @@
     tab('cmp');
   });
   ['mKwh','mDays'].forEach(function(id){$(id).addEventListener('input',renderMarket);});
+  $('mPot').addEventListener('change',function(){
+    if(ALL_OFFERS.length) buildMarketForPower(parseFloat($('mPot').value)||6.9);
+    renderMarket();
+  });
 
   var TABS=['split','cmp','mkt'];
   function tab(sel){
