@@ -233,7 +233,7 @@
       <div style="overflow-x:auto;margin-top:6px"><table>
         <thead><tr><th>Fornecedor &middot; plano</th><th>&asymp; &euro;/mês</th><th>Energia</th><th>Potência</th><th>Condições</th><th></th></tr></thead>
         <tbody id="mktBody"></tbody></table></div>
-      <p class="note">Estimativa <b>com IVA</b> para o teu consumo, mesmo motor do comparador. Muitos preços dependem de condições (débito direto, fatura eletrónica, adesão a clube, pacote telecom) ou já incluem desconto promocional &mdash; vê a coluna <b>Condições</b> e confirma sempre na ficha oficial. <span id="mktUpd"></span></p>
+      <p class="note">Estimativa <b>com IVA a 6,9 kVA</b> para o consumo indicado, com as tarifas reguladas de 2026 incluídas (a potência tem IVA a 6% por ser &le; 6,9 kVA). Independente da tua fatura atual. Muitos preços dependem de condições (débito direto, fatura eletrónica, adesão a clube, pacote telecom) ou já incluem desconto promocional &mdash; vê a coluna <b>Condições</b> e confirma sempre na ficha oficial. <span id="mktUpd"></span></p>
     </section>
   </div>
 
@@ -522,12 +522,19 @@
   fetch('tariffs.json',{cache:'no-store'}).then(function(r){return r.json();})
     .then(function(d){ applyTariffs(d); if($('panel-mkt') && !$('panel-mkt').hidden) renderMarket(); })
     .catch(function(){ /* keep embedded snapshot */ });
+  // Standalone 6,9 kVA bill — independent of the personal "fatura atual" card.
+  // Regulado 2026 (sem IVA): redes 0,0607 €/kWh, IEC 0,001 €/kWh, DGEG 0,07 €/mês, CAV 2,85 €/mês.
+  // IVA: potência + CAV a 6% (potência contratada <= 6,9 kVA); energia + redes + IEC + DGEG a 23%.
+  var MKT_REG={redes:0.0607,iec:0.001,dgeg:0.07,cav:2.85};
+  function marketBill(kwh,days,ener,pot){
+    var b23=kwh*(ener+MKT_REG.redes)+kwh*MKT_REG.iec+MKT_REG.dgeg;
+    var b6=days*pot+MKT_REG.cav;
+    return b23*1.23+b6*1.06;
+  }
   function renderMarket(){
-    var r=rates(), kwh=parseNum($('mKwh').value), days=parseNum($('mDays').value);
+    var kwh=parseNum($('mKwh').value), days=parseNum($('mDays').value);
     var rows=MARKET.map(function(m){
-      var rn=Object.assign({},r,{ener:m.e,pot:m.p});
-      var b=computeBill(kwh,days,rn,true);
-      return {m:m,total:b.total};
+      return {m:m,total:marketBill(kwh,days,m.e,m.p)};
     }).sort(function(a,b){return a.total-b.total;});
     $('mktBody').innerHTML=rows.map(function(x,i){
       var win=i===0?' style="color:var(--good);font-weight:700"':'';
