@@ -509,6 +509,19 @@
     {n:'Nossa Energia · Digital',e:0.1749,p:0.6319,c:'fixo 12m; online, DD + fatura elet.'},
     {n:'Nabalia · Tarifa Fixa',e:0.19013,p:0.3436,c:'fixo anual'}
   ];
+  function applyTariffs(data){
+    if(!data || !Array.isArray(data.offers) || !data.offers.length) return;
+    MARKET = data.offers.map(function(o){
+      return { n: o.comercializador + (o.plano ? ' · ' + o.plano : ''),
+        e: (o.energia_efetiva_eur_kwh!=null?o.energia_efetiva_eur_kwh:o.energia_base_eur_kwh),
+        p: (o.potencia_efetiva_eur_dia!=null?o.potencia_efetiva_eur_dia:o.potencia_base_eur_dia),
+        c: (o.condicoes||'') + (o.divergence_flag==='promo_or_stale'?' · (ERSE difere)':'') };
+    }).filter(function(m){ return m.e>0 && m.p>0; });
+    window.__tariffsMeta = { at: data.generated_at, stale: data.stale };
+  }
+  fetch('tariffs.json',{cache:'no-store'}).then(function(r){return r.json();})
+    .then(function(d){ applyTariffs(d); if($('panel-mkt') && !$('panel-mkt').hidden) renderMarket(); })
+    .catch(function(){ /* keep embedded snapshot */ });
   function renderMarket(){
     var r=rates(), kwh=parseNum($('mKwh').value), days=parseNum($('mDays').value);
     var rows=MARKET.map(function(m){
@@ -527,7 +540,12 @@
         '<td><button class="tab useBtn" style="padding:4px 11px;font-size:12px" data-e="'+x.m.e+'" data-p="'+x.m.p+'">Usar</button></td>'+
       '</tr>';
     }).join('');
-    $('mktUpd').textContent='Snapshot manual '+new Date().toLocaleDateString('pt-PT')+'.';
+    if(window.__tariffsMeta){
+      var atDate=window.__tariffsMeta.at?new Date(window.__tariffsMeta.at).toLocaleDateString('pt-PT'):new Date().toLocaleDateString('pt-PT');
+      $('mktUpd').textContent='Atualizado '+atDate+(window.__tariffsMeta.stale?' — atenção: dados podem estar desatualizados.':'.');
+    } else {
+      $('mktUpd').textContent='Snapshot manual '+new Date().toLocaleDateString('pt-PT')+'.';
+    }
   }
   $('mktBody').addEventListener('click',function(ev){
     var b=ev.target.closest('.useBtn'); if(!b)return;
