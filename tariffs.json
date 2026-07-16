@@ -1,0 +1,471 @@
+{
+  "generated_at": "2026-07-16T23:02:09.694Z",
+  "stale": false,
+  "stale_reason": null,
+  "params": {
+    "potencia_kva": 6.9,
+    "ciclo": "Simples"
+  },
+  "count": 26,
+  "offers": [
+    {
+      "comercializador": "Alfa Energia",
+      "plano": "Tarifa ALFA POWER",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1856,
+      "potencia_base_eur_dia": 0.7655,
+      "energia_efetiva_eur_kwh": null,
+      "potencia_efetiva_eur_dia": null,
+      "iva_incluido": false,
+      "condicoes": "",
+      "sources": {
+        "erse": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "Audax Renovables",
+      "plano": "TOP T4 - Fixo de 12 meses",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1836,
+      "potencia_base_eur_dia": 0.508,
+      "energia_efetiva_eur_kwh": null,
+      "potencia_efetiva_eur_dia": null,
+      "iva_incluido": false,
+      "condicoes": "",
+      "sources": {
+        "erse": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "Coopérnico",
+      "plano": "Coopérnico BASE 2.0",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "indexado",
+      "energia_base_eur_kwh": 0.1923,
+      "potencia_base_eur_dia": 0.368,
+      "energia_efetiva_eur_kwh": 0.1518,
+      "potencia_efetiva_eur_dia": 0.3418,
+      "iva_incluido": false,
+      "condicoes": "indexado OMIE (indicativo); cooperativa 60€ p/ aderir",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": "promo_or_stale"
+    },
+    {
+      "comercializador": "EDP Comercial",
+      "plano": "Eletricidade DD+FE - Digital",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1337,
+      "potencia_base_eur_dia": 0.4624,
+      "energia_efetiva_eur_kwh": 0.142,
+      "potencia_efetiva_eur_dia": 0.5607,
+      "iva_incluido": false,
+      "condicoes": "c/ 15% energia 1º ano; 100% verde; base 0,1621; DD+fatura elet.",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": "promo_or_stale"
+    },
+    {
+      "comercializador": "Endesa",
+      "plano": "Tarifa Indexada Endesa Luz + Plano Amigo",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1949,
+      "potencia_base_eur_dia": 0.4094,
+      "energia_efetiva_eur_kwh": 0.138989,
+      "potencia_efetiva_eur_dia": 0.6925,
+      "iva_incluido": false,
+      "condicoes": "c/ 15% 1º ano (DD+digital); base 0,163516/0,8147; +5% promo 3m",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": "promo_or_stale"
+    },
+    {
+      "comercializador": "EZU Energia",
+      "plano": "Tarifa EZU Premium",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1606,
+      "potencia_base_eur_dia": 0.4592,
+      "energia_efetiva_eur_kwh": 0.1606,
+      "potencia_efetiva_eur_dia": 0.4592,
+      "iva_incluido": false,
+      "condicoes": "fixo 12 meses",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "G9 Energy",
+      "plano": "ENERGIA+",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1586,
+      "potencia_base_eur_dia": 0.6242,
+      "energia_efetiva_eur_kwh": 0.1496,
+      "potencia_efetiva_eur_dia": 0.4498,
+      "iva_incluido": false,
+      "condicoes": "fixo, sem fidelização",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": "promo_or_stale"
+    },
+    {
+      "comercializador": "GALP",
+      "plano": "Casa & Estrada Eletricidade Verde & GPL & Combustível (DD)",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1509,
+      "potencia_base_eur_dia": 0.5492,
+      "energia_efetiva_eur_kwh": null,
+      "potencia_efetiva_eur_dia": null,
+      "iva_incluido": false,
+      "condicoes": "",
+      "sources": {
+        "erse": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "GoldEnergy",
+      "plano": "Monoeletrico ACP com desconto Campanha Amigo",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.152,
+      "potencia_base_eur_dia": 0.3614,
+      "energia_efetiva_eur_kwh": 0.1269,
+      "potencia_efetiva_eur_dia": 0.6799,
+      "iva_incluido": false,
+      "condicoes": "exclusivo sócios ACP (4,90€+/mês)",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": "promo_or_stale"
+    },
+    {
+      "comercializador": "Ibelectra",
+      "plano": "Solução Conforto (DD + FE)",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1534,
+      "potencia_base_eur_dia": 0.3936,
+      "energia_efetiva_eur_kwh": 0.1173,
+      "potencia_efetiva_eur_dia": 0.4436,
+      "iva_incluido": false,
+      "condicoes": "base; -12% c/ débito direto + fatura eletrónica",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": "promo_or_stale"
+    },
+    {
+      "comercializador": "Iberdrola",
+      "plano": "Mais Casa Amigo (Oferta 40€ + 30€) - FE e DDC",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1639,
+      "potencia_base_eur_dia": 0.5884,
+      "energia_efetiva_eur_kwh": 0.1639,
+      "potencia_efetiva_eur_dia": 0.5884,
+      "iva_incluido": false,
+      "condicoes": "fixo, s/ fidelização; 40€ bónus; 100% verde",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "JAFPLUS",
+      "plano": "Mais Energia",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.16,
+      "potencia_base_eur_dia": 0.4936,
+      "energia_efetiva_eur_kwh": 0.16,
+      "potencia_efetiva_eur_dia": 0.4936,
+      "iva_incluido": false,
+      "condicoes": "fixo 12m, sem fidelização",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "LOGICA Energy",
+      "plano": "Base IndexS",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "indexado",
+      "energia_base_eur_kwh": 0.2203,
+      "potencia_base_eur_dia": 0.5591,
+      "energia_efetiva_eur_kwh": null,
+      "potencia_efetiva_eur_dia": null,
+      "iva_incluido": false,
+      "condicoes": "",
+      "sources": {
+        "erse": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "LuzBoa",
+      "plano": "ROCKWATT - Indie Spot",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "indexado",
+      "energia_base_eur_kwh": 0.1888,
+      "potencia_base_eur_dia": 0.4636,
+      "energia_efetiva_eur_kwh": null,
+      "potencia_efetiva_eur_dia": null,
+      "iva_incluido": false,
+      "condicoes": "",
+      "sources": {
+        "erse": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "LUZiGAS",
+      "plano": "SUPER LIG FIXO",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1656,
+      "potencia_base_eur_dia": 0.3707,
+      "energia_efetiva_eur_kwh": null,
+      "potencia_efetiva_eur_dia": null,
+      "iva_incluido": false,
+      "condicoes": "",
+      "sources": {
+        "erse": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "MEO Energia",
+      "plano": "MEO Energia FIXA DD FE + MEO M4e / M5e",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1499,
+      "potencia_base_eur_dia": 0.55,
+      "energia_efetiva_eur_kwh": 0.1699,
+      "potencia_efetiva_eur_dia": 0.55,
+      "iva_incluido": false,
+      "condicoes": "0,1499 c/ pacote MEO telecom + DD + fatura eletrónica",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": "promo_or_stale"
+    },
+    {
+      "comercializador": "Mercado Regulado",
+      "plano": "Condições de preço regulado",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "regulada",
+      "energia_base_eur_kwh": 0.1654,
+      "potencia_base_eur_dia": 0.3659,
+      "energia_efetiva_eur_kwh": 0.1654,
+      "potencia_efetiva_eur_dia": 0.3659,
+      "iva_incluido": false,
+      "condicoes": "tarifa regulada (comercializador último recurso)",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "Muon Electric",
+      "plano": "Muon Casa Verde",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1611,
+      "potencia_base_eur_dia": 0.5389,
+      "energia_efetiva_eur_kwh": 0.159,
+      "potencia_efetiva_eur_dia": 0.5389,
+      "iva_incluido": false,
+      "condicoes": "fixo 12m, 100% verde; DD + fatura eletrónica",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "Nabalia Energia",
+      "plano": "FIXO",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.184,
+      "potencia_base_eur_dia": 0.3436,
+      "energia_efetiva_eur_kwh": 0.19013,
+      "potencia_efetiva_eur_dia": 0.3436,
+      "iva_incluido": false,
+      "condicoes": "opção renovável / não-renovável",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "NOSSA Energia",
+      "plano": "Tarifa Indexada + Plano Amigo",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1929,
+      "potencia_base_eur_dia": 0.4296,
+      "energia_efetiva_eur_kwh": 0.1749,
+      "potencia_efetiva_eur_dia": 0.6319,
+      "iva_incluido": false,
+      "condicoes": "fixo 12m; online, DD + fatura eletrónica",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": "promo_or_stale"
+    },
+    {
+      "comercializador": "OENEO ENERGY",
+      "plano": "PRIME",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1649,
+      "potencia_base_eur_dia": 0.5388,
+      "energia_efetiva_eur_kwh": null,
+      "potencia_efetiva_eur_dia": null,
+      "iva_incluido": false,
+      "condicoes": "",
+      "sources": {
+        "erse": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "Plenitude",
+      "plano": "TARIFA TENDENCIA",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1941,
+      "potencia_base_eur_dia": 0.3936,
+      "energia_efetiva_eur_kwh": 0.135323,
+      "potencia_efetiva_eur_dia": 0.7435,
+      "iva_incluido": false,
+      "condicoes": "fixo 12 meses",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": "promo_or_stale"
+    },
+    {
+      "comercializador": "Portulogos",
+      "plano": "Faro Fixo GO 30",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.2046,
+      "potencia_base_eur_dia": 0.3722,
+      "energia_efetiva_eur_kwh": null,
+      "potencia_efetiva_eur_dia": null,
+      "iva_incluido": false,
+      "condicoes": "",
+      "sources": {
+        "erse": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "Repsol",
+      "plano": "TARIFA VODAFONE DD + FE",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1517,
+      "potencia_base_eur_dia": 0.5636,
+      "energia_efetiva_eur_kwh": 0.14245,
+      "potencia_efetiva_eur_dia": 0.5636,
+      "iva_incluido": false,
+      "condicoes": "só c/ cartão Vodafone p/ -23%; base 0,185",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": "promo_or_stale"
+    },
+    {
+      "comercializador": "Usenergy",
+      "plano": "Online 2026",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "indexado",
+      "energia_base_eur_kwh": 0.1929,
+      "potencia_base_eur_dia": 0.5498,
+      "energia_efetiva_eur_kwh": null,
+      "potencia_efetiva_eur_dia": null,
+      "iva_incluido": false,
+      "condicoes": "",
+      "sources": {
+        "erse": "2026-07-16"
+      },
+      "divergence_flag": null
+    },
+    {
+      "comercializador": "YES ENERGY",
+      "plano": "#SMARTLIVING",
+      "potencia_kva": 6.9,
+      "ciclo": "Simples",
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1559,
+      "potencia_base_eur_dia": 0.6057,
+      "energia_efetiva_eur_kwh": 0.1341,
+      "potencia_efetiva_eur_dia": 0.6057,
+      "iva_incluido": false,
+      "condicoes": "fixo 1 ano; DD + fatura eletrónica",
+      "sources": {
+        "erse": "2026-07-16",
+        "site": "2026-07-16"
+      },
+      "divergence_flag": "promo_or_stale"
+    }
+  ]
+}
