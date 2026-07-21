@@ -189,6 +189,26 @@
         <div class="split"><input type="range" id="fixSplit" min="0" max="100" step="5" value="50"><span class="val" id="fixSplitVal">50% &middot; &mdash;</span></div>
       </div>
     </section>
+
+    <section class="card" id="forecastCard" style="display:none">
+      <div class="lbl" style="margin-bottom:2px">Estimativa para o mês inteiro</div>
+      <p class="hint" id="fcHint">Com base na média diária dos dias medidos, projetada para um mês.</p>
+      <div class="hero">
+        <div class="amt num" id="fcAmt" style="font-size:clamp(27px,5vw,40px)">&mdash;</div>
+        <div class="cap">a cobrar ao inquilino, por mês</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="k">Média diária</div><div class="v"><span id="fcAvg">&mdash;</span> <small>kWh/dia</small></div></div>
+        <div class="stat"><div class="k">Consumo projetado</div><div class="v"><span id="fcKwh">&mdash;</span> <small>kWh/mês</small></div></div>
+        <div class="stat"><div class="k">Custo do consumo (c/ IVA)</div><div class="v" id="fcMetered">&mdash;</div></div>
+        <div class="stat"><div class="k">Parte fixa projetada</div><div class="v" id="fcFixed">&mdash;</div></div>
+      </div>
+      <div class="field" style="max-width:210px;margin-top:15px">
+        <label>Dias do mês a projetar</label>
+        <div class="inwrap"><input id="fcDays" inputmode="decimal" value="30"><span class="unit">dias</span></div>
+      </div>
+      <p class="note">Projeção linear: assume que o resto do mês consome como a média medida. É uma estimativa &mdash; para o valor exato, usa o CSV do período de faturação completo.</p>
+    </section>
   </div>
 
   <!-- ============ PANEL: COMPARE ============ -->
@@ -341,6 +361,40 @@
     if(state.dayCount<days-1){ w.style.display='block';
       w.textContent='O CSV cobre '+state.dayCount+' dia(s) mas o período fixo assume '+nf(days,0)+' dias. Para o total fechar certo, usa o CSV do período de faturação completo.'; }
     else w.style.display='none';
+
+    renderForecast(r);
+  }
+
+  // "DD/MM/YYYY HH:MM" -> Date (local)
+  function toDateTime(s){
+    if(!s) return null;
+    var p=(''+s).trim().split(/\s+/), d=(p[0]||'').split('/'), t=(p[1]||'00:00').split(':');
+    if(d.length<3) return null;
+    return new Date(+d[2],+d[1]-1,+d[0],+t[0]||0,+t[1]||0);
+  }
+
+  // ---------- MONTHLY FORECAST ----------
+  function renderForecast(r){
+    if(!state.loaded) return;
+    // Daily average over the true measured span (hourly buckets, +1h for the last reading),
+    // so a partial first/last day does not drag the average down.
+    var fd=toDateTime(state.from), td=toDateTime(state.to), spanDays;
+    if(fd&&td&&td>fd) spanDays=((td-fd)/3600000+1)/24;
+    else spanDays=state.dayCount||1;
+    if(!(spanDays>0)) spanDays=state.dayCount||1;
+    var avg=state.kWh/spanDays;
+    var monthDays=parseNum($('fcDays').value)||30;
+    var projKwh=avg*monthDays;
+    var pm=computeBill(projKwh,monthDays,r,false); // metered only, projected
+    var potCom=(monthDays*r.pot)*1.23, dgegCom=r.dgeg*1.23, cavCom=r.cav*1.06, fixTot=potCom+dgegCom+cavCom;
+    var split=parseNum($('fixSplit').value)/100, fixShare=fixTot*split;
+    var grand=pm.total+fixShare;
+    $('fcAvg').textContent=nf(avg,3);
+    $('fcKwh').textContent=nf(projKwh,1);
+    $('fcMetered').textContent=eur(pm.total);
+    $('fcFixed').textContent=eur(fixShare);
+    $('fcAmt').textContent=eur(grand);
+    $('fcHint').textContent='Média de '+nf(spanDays,1)+' dia(s) medido(s) · projetada para '+nf(monthDays,0)+' dias, com as tarifas acima.';
   }
 
   // ---------- COMPARISON ----------
@@ -403,7 +457,7 @@
     state.raw=text; state.name=name||'consumo.csv';
     var d=$('drop'); d.classList.add('loaded');
     d.innerHTML='<div class="filerow"><span class="chk">✓</span><b>'+esc(name||'CSV')+'</b></div><div class="filemeta">'+nf(rp.kWh,3)+' kWh · '+rp.dayCount+' dia(s) · '+esc(rp.from||'')+' → '+esc(rp.to||'')+'</div>';
-    $('detCard').style.display=''; $('fixedCard').style.display=''; $('chartCard').style.display='';
+    $('detCard').style.display=''; $('fixedCard').style.display=''; $('forecastCard').style.display=''; $('chartCard').style.display='';
     renderSplit(); drawChart();
   }
 
@@ -445,6 +499,7 @@
   ['rEner','rRedes','rIEC','rPot','rDgeg','rCav','rK6','rK23','rDays'].forEach(function(id){$(id).addEventListener('input',renderAll);});
   ['nEner','nPot','nRedes','cKwh','cDays'].forEach(function(id){$(id).addEventListener('input',renderCompare);});
   $('fixSplit').addEventListener('input',renderSplit);
+  $('fcDays').addEventListener('input',renderSplit);
 
   // ---------- email ----------
   var MAIL_URL='https://luz-api.diogoandrade.com/email';
