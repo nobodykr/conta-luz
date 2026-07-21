@@ -127,7 +127,9 @@
   <!-- shared: current tariffs -->
   <section class="card">
     <h2>Tarifas da tua fatura atual</h2>
-    <p class="hint">Pré-preenchido com a fatura Eni de junho (BTN Simples, 4,6 kVA). Usado nas duas secções abaixo.</p>
+    <p class="hint">Usado nas duas secções abaixo. Larga o PDF da fatura para preencher automaticamente, ou edita à mão.</p>
+    <div class="drop" id="invDrop" style="margin-bottom:16px"><input type="file" id="invFile" accept=".pdf,application/pdf" hidden>
+      <div class="big">Largar o PDF da fatura (Eni Plenitude)</div><div class="small">preenche as tarifas automaticamente &middot; o ficheiro não sai do teu navegador</div></div>
     <div class="fgrid3">
       <div class="field"><label>Preço da energia</label><div class="inwrap"><input id="rEner" inputmode="decimal" value="0,120873"><span class="unit">€/kWh</span></div></div>
       <div class="field"><label>Acesso às redes</label><div class="inwrap"><input id="rRedes" inputmode="decimal" value="0,060700"><span class="unit">€/kWh</span></div></div>
@@ -376,11 +378,18 @@
   // ---------- MONTHLY FORECAST ----------
   function renderForecast(r){
     if(!state.loaded) return;
-    // Daily average over the true measured span (hourly buckets, +1h for the last reading),
-    // so a partial first/last day does not drag the average down.
-    var fd=toDateTime(state.from), td=toDateTime(state.to), spanDays;
-    if(fd&&td&&td>fd) spanDays=((td-fd)/3600000+1)/24;
-    else spanDays=state.dayCount||1;
+    // Daily average over the true measured span. The Shelly export can be daily OR hourly
+    // buckets, so infer the bucket width from the median gap between readings and add one
+    // bucket for the final reading. This keeps the average honest for either granularity and
+    // when the first/last day is a fragment.
+    var st=state.stamps||[], spanDays;
+    if(st.length>1){
+      var gaps=[];
+      for(var gi=1;gi<st.length;gi++){ var g=st[gi]-st[gi-1]; if(g>0)gaps.push(g); }
+      gaps.sort(function(a,b){return a-b;});
+      var bucket=gaps.length?gaps[Math.floor(gaps.length/2)]:86400000;
+      spanDays=((st[st.length-1]-st[0])+bucket)/86400000;
+    } else spanDays=state.dayCount||1;
     if(!(spanDays>0)) spanDays=state.dayCount||1;
     var avg=state.kWh/spanDays;
     var monthDays=parseNum($('fcDays').value)||30;
@@ -429,7 +438,7 @@
   // ---------- CSV ----------
   function parseShelly(text){
     text=text.replace(/^﻿/,'');
-    var lines=text.split(/\r?\n/), section=null, total=0, days={}, from=null, to=null;
+    var lines=text.split(/\r?\n/), section=null, total=0, days={}, from=null, to=null, stamps=[];
     var reRow=/^\s*(\d{2}\/\d{2}\/\d{4})\s+(\d{2}:\d{2})\s*,\s*(-?\d{1,7}(?:[.,]\d{1,4})?)\s*$/;
     var lim=Math.min(lines.length,MAX_LINES);
     for(var i=0;i<lim;i++){
@@ -445,15 +454,17 @@
       else wh=parseFloat(s);
       if(isNaN(wh))continue;
       total+=wh; days[m[1]]=(days[m[1]]||0)+wh; if(from===null)from=m[1]+' '+m[2]; to=m[1]+' '+m[2];
+      var dt=toDateTime(m[1]+' '+m[2]); if(dt)stamps.push(+dt);
     }
-    return {kWh:total/1000,days:days,from:from,to:to,dayCount:Object.keys(days).length};
+    stamps.sort(function(a,b){return a-b;});
+    return {kWh:total/1000,days:days,from:from,to:to,dayCount:Object.keys(days).length,stamps:stamps};
   }
   function fileErr(msg){ var d=$('drop'); d.classList.remove('loaded'); state.loaded=false;
     d.innerHTML='<div class="big" style="color:var(--crit)">'+esc(msg)+'</div><div class="small">clica para escolher outro ficheiro</div>'; }
   function loadText(text,name){
     var rp=parseShelly(text);
     if(rp.dayCount===0){ fileErr('CSV sem linhas de consumo. É o export horário do Shelly?'); return; }
-    state.kWh=rp.kWh; state.days=rp.days; state.from=rp.from; state.to=rp.to; state.dayCount=rp.dayCount; state.loaded=true;
+    state.kWh=rp.kWh; state.days=rp.days; state.from=rp.from; state.to=rp.to; state.dayCount=rp.dayCount; state.stamps=rp.stamps; state.loaded=true;
     state.raw=text; state.name=name||'consumo.csv';
     var d=$('drop'); d.classList.add('loaded');
     d.innerHTML='<div class="filerow"><span class="chk">✓</span><b>'+esc(name||'CSV')+'</b></div><div class="filemeta">'+nf(rp.kWh,3)+' kWh · '+rp.dayCount+' dia(s) · '+esc(rp.from||'')+' → '+esc(rp.to||'')+'</div>';
@@ -500,6 +511,89 @@
   ['nEner','nPot','nRedes','cKwh','cDays'].forEach(function(id){$(id).addEventListener('input',renderCompare);});
   $('fixSplit').addEventListener('input',renderSplit);
   $('fcDays').addEventListener('input',renderSplit);
+
+  // ---------- INVOICE PDF AUTO-FILL ----------
+  // Parses the Eni Plenitude "DETALHE DA FATURAÇÃO" locally (pdf.js). Handles one or more
+  // invoices in the same PDF: rates are the same, kWh (por escalão de IVA) and dias somam.
+  function invNum(s){ s=(''+s).replace(/\s/g,''); if(s.indexOf(',')>-1&&s.indexOf('.')>-1)s=s.replace(/\./g,'').replace(',','.'); else if(s.indexOf(',')>-1)s=s.replace(',','.'); var v=parseFloat(s); return isNaN(v)?null:v; }
+  function parseInvoice(txt){
+    txt=(''+txt).replace(/\s+/g,' ');
+    var blocks=txt.split(/DETALHE DA FATURA[ÇC][ÃA]O/i).slice(1);
+    if(!blocks.length) blocks=[txt];
+    var agg={ener:null,redes:null,pot:null,iec:null,dgeg:null,cav:null,k6:0,k23:0,days:0,n:0};
+    blocks.forEach(function(b){
+      var m, ener=(m=b.match(/Pre[çc]o da energia:.*?([\d.,]+)\s*€\/kWh/i))?invNum(m[1]):null;
+      var redes=(m=b.match(/Pre[çc]o tarifas acesso [àa]s redes:.*?([\d.,]+)\s*€\/kWh/i))?invNum(m[1]):null;
+      var potRegion=(b.match(/POT[ÊE]NCIA:([\s\S]*?)TOTAL ENERGIA/i)||[])[1]||'';
+      var pot=0,re=/([\d.,]+)\s*€\/dia/gi,pm; while((pm=re.exec(potRegion)))pot+=invNum(pm[1])||0;
+      var iec=(m=b.match(/Taxa IEC.*?\*\s*([\d.,]+)\s*€\/kWh/i))?invNum(m[1]):null;
+      var dgeg=(m=b.match(/DG[GE]{2}.*?\*\s*([\d.,]+)\s*€\/m[êe]s/i))?invNum(m[1]):null;
+      var cav=(m=b.match(/Contribui[çc][ãa]o Audiovisual.*?\*\s*([\d.,]+)\s*€\/m[êe]s/i))?invNum(m[1]):null;
+      var enerRegion=(b.match(/Pre[çc]o da energia:([\s\S]*?)(?:POT[ÊE]NCIA:|TOTAL ENERGIA)/i)||[])[1]||'';
+      var k6=0,k23=0,rk=/([\d.,]+)\s*kWh\s*\*[^()]*?\((\d+)%\s*IVA\)/gi,km;
+      while((km=rk.exec(enerRegion))){var v=invNum(km[1])||0,iva=+km[2]; if(iva===6)k6+=v; else if(iva===23)k23+=v;}
+      var dm=potRegion.match(/([\d.,]+)\s*dias\b/i), days=dm?invNum(dm[1]):null;
+      if(ener!=null)agg.ener=ener; if(redes!=null)agg.redes=redes; if(pot>0)agg.pot=pot;
+      if(iec!=null)agg.iec=iec; if(dgeg!=null)agg.dgeg=dgeg; if(cav!=null)agg.cav=cav;
+      agg.k6+=k6; agg.k23+=k23; if(days)agg.days+=days; agg.n++;
+    });
+    var m2=txt.match(/PER[ÍI]ODO FATURA[çc][ãa]O:\s*([\d-]+ a [\d-]+)/i); if(m2)agg.period=m2[1];
+    return agg;
+  }
+  function invErr(msg){ var d=$('invDrop'); d.classList.remove('loaded');
+    d.innerHTML='<div class="big" style="color:var(--crit)">'+esc(msg)+'</div><div class="small">clica para escolher outro ficheiro</div>'; }
+  function fillTariffs(r){
+    var set=[['rEner',r.ener,6],['rRedes',r.redes,6],['rIEC',r.iec,6],['rPot',r.pot,6],
+             ['rDgeg',r.dgeg,2],['rCav',r.cav,2],['rK6',r.k6,4],['rK23',r.k23,4],['rDays',r.days,0]];
+    var filled=0,missing=[];
+    set.forEach(function(f){ var v=f[1];
+      if(v!=null&&v>0){ $(f[0]).value=nf(v,f[2]); filled++; }
+      else missing.push(f[0]); });
+    renderAll();
+    var d=$('invDrop'); d.classList.add('loaded');
+    var per=r.period?(' · '+esc(r.period)):'', many=r.n>1?(' · '+r.n+' faturas somadas'):'';
+    d.innerHTML='<div class="filerow"><span class="chk">✓</span><b>Tarifas preenchidas</b> ('+filled+'/9)'+many+'</div>'+
+      '<div class="filemeta">energia '+nf(r.ener||0,6)+' · redes '+nf(r.redes||0,6)+' · potência '+nf(r.pot||0,6)+' €/dia · '+
+      nf(r.k6||0,0)+' kWh a 6% / '+nf(r.k23||0,0)+' kWh a 23% · '+nf(r.days||0,0)+' dias'+per+'</div>'+
+      (missing.length?'<div class="filemeta" style="color:var(--crit)">confirma à mão: '+missing.length+' campo(s) não lidos</div>':'')+
+      '<div class="small" style="margin-top:6px">Confere sempre contra a fatura antes de usar. Clica para trocar de ficheiro.</div>';
+  }
+  var _pdfjs=null;
+  function loadPdfjs(){
+    if(_pdfjs) return Promise.resolve(_pdfjs);
+    return import('./vendor/pdf.min.mjs').then(function(mod){
+      mod.GlobalWorkerOptions.workerSrc='./vendor/pdf.worker.min.mjs'; _pdfjs=mod; return mod; });
+  }
+  function readInvoice(f){
+    if(!f) return;
+    if(!/\.pdf$/i.test(f.name||'')&&!/pdf/i.test(f.type||'')){ invErr('Aceita só o PDF da fatura.'); return; }
+    if(f.size>8*1024*1024){ invErr('PDF demasiado grande (máx 8 MB).'); return; }
+    var d=$('invDrop'); d.classList.remove('loaded');
+    d.innerHTML='<div class="big">A ler a fatura…</div><div class="small">tudo no teu navegador</div>';
+    f.arrayBuffer().then(function(buf){
+      return loadPdfjs().then(function(pdfjs){
+        return pdfjs.getDocument({data:new Uint8Array(buf)}).promise.then(function(doc){
+          var chain=Promise.resolve(''), p;
+          for(p=1;p<=doc.numPages;p++){ (function(pn){ chain=chain.then(function(acc){
+            return doc.getPage(pn).then(function(pg){ return pg.getTextContent(); })
+              .then(function(tc){ return acc+' '+tc.items.map(function(i){return i.str;}).join(' '); }); }); })(p); }
+          return chain;
+        });
+      });
+    }).then(function(txt){
+      var r=parseInvoice(txt);
+      if(r.ener==null&&r.redes==null){ invErr('Não reconheci as tarifas neste PDF. É a fatura detalhada da Eni Plenitude?'); return; }
+      fillTariffs(r);
+    }).catch(function(e){ invErr('Não consegui ler o PDF: '+(e&&e.message||'erro')); });
+  }
+  (function(){
+    var d=$('invDrop'), fi=$('invFile');
+    d.addEventListener('click',function(){fi.click();});
+    d.addEventListener('dragover',function(e){e.preventDefault();d.classList.add('over');});
+    d.addEventListener('dragleave',function(){d.classList.remove('over');});
+    d.addEventListener('drop',function(e){e.preventDefault();d.classList.remove('over');var f=e.dataTransfer.files[0];if(f)readInvoice(f);});
+    fi.addEventListener('change',function(e){var f=e.target.files[0];if(f)readInvoice(f);});
+  })();
 
   // ---------- email ----------
   var MAIL_URL='https://luz-api.diogoandrade.com/email';
