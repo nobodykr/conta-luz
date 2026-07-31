@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T06:36:52.544Z",
+  "generated_at": "2026-07-31T06:37:23.708Z",
   "stale": false,
   "stale_reason": null,
   "params": {
@@ -32,7 +32,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -49,7 +49,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -66,8 +66,8 @@
       "iva_incluido": false,
       "condicoes": "indexado OMIE (indicativo); cooperativa 60€ p/ aderir",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -84,8 +84,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% energia 1º ano; 100% verde; base 0,1621; DD+fatura elet.",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -102,8 +102,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% 1º ano (DD+digital); base 0,163516/0,8147; +5% promo 3m",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -120,8 +120,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -138,7 +138,7 @@
       "iva_incluido": false,
       "condicoes": "fixo, sem fidelização",
       "sources": {
-        "site": "2026-07-30"
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -155,7 +155,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -172,8 +172,8 @@
       "iva_incluido": false,
       "condicoes": "exclusivo sócios ACP (4,90€+/mês)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -190,8 +190,8 @@
       "iva_incluido": false,
       "condicoes": "base; -12% c/ débito direto + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -208,8 +208,8 @@
       "iva_incluido": false,
       "condicoes": "fixo, s/ fidelização; 40€ bónus; 100% verde",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -226,8 +226,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, sem fidelização",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -244,7 +244,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -261,7 +261,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -278,7 +278,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -295,8 +295,8 @@
       "iva_incluido": false,
       "condicoes": "0,1499 c/ pacote MEO telecom + DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -313,8 +313,8 @@
       "iva_incluido": false,
       "condicoes": "tarifa regulada (comercializador último recurso)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -331,8 +331,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, 100% verde; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -349,8 +349,8 @@
       "iva_incluido": false,
       "condicoes": "opção renovável / não-renovável",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -367,8 +367,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m; online, DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -385,7 +385,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -402,8 +402,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -420,7 +420,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -437,8 +437,8 @@
       "iva_incluido": false,
       "condicoes": "só c/ cartão Vodafone p/ -23%; base 0,185",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -447,15 +447,15 @@
       "plano": "Online 2026",
       "potencia_kva": 1.15,
       "ciclo": "Simples",
-      "tipo": "indexado",
-      "energia_base_eur_kwh": 0.1929,
-      "potencia_base_eur_dia": 0.0917,
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1389,
+      "potencia_base_eur_dia": 0.1031,
       "energia_efetiva_eur_kwh": null,
       "potencia_efetiva_eur_dia": null,
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -472,8 +472,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 1 ano; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -490,7 +490,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -507,7 +507,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -524,8 +524,8 @@
       "iva_incluido": false,
       "condicoes": "indexado OMIE (indicativo); cooperativa 60€ p/ aderir",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -542,8 +542,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% energia 1º ano; 100% verde; base 0,1621; DD+fatura elet.",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -560,8 +560,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% 1º ano (DD+digital); base 0,163516/0,8147; +5% promo 3m",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -578,8 +578,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -596,7 +596,7 @@
       "iva_incluido": false,
       "condicoes": "fixo, sem fidelização",
       "sources": {
-        "site": "2026-07-30"
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -613,7 +613,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -630,8 +630,8 @@
       "iva_incluido": false,
       "condicoes": "exclusivo sócios ACP (4,90€+/mês)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -648,8 +648,8 @@
       "iva_incluido": false,
       "condicoes": "base; -12% c/ débito direto + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -666,8 +666,8 @@
       "iva_incluido": false,
       "condicoes": "fixo, s/ fidelização; 40€ bónus; 100% verde",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -684,8 +684,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, sem fidelização",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -702,7 +702,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -719,7 +719,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -736,7 +736,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -753,8 +753,8 @@
       "iva_incluido": false,
       "condicoes": "0,1499 c/ pacote MEO telecom + DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -771,8 +771,8 @@
       "iva_incluido": false,
       "condicoes": "tarifa regulada (comercializador último recurso)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -789,8 +789,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, 100% verde; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -807,8 +807,8 @@
       "iva_incluido": false,
       "condicoes": "opção renovável / não-renovável",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -825,8 +825,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m; online, DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -843,7 +843,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -860,8 +860,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -878,7 +878,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -895,8 +895,8 @@
       "iva_incluido": false,
       "condicoes": "só c/ cartão Vodafone p/ -23%; base 0,185",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -905,15 +905,15 @@
       "plano": "Online 2026",
       "potencia_kva": 2.3,
       "ciclo": "Simples",
-      "tipo": "indexado",
-      "energia_base_eur_kwh": 0.1929,
-      "potencia_base_eur_dia": 0.1832,
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1389,
+      "potencia_base_eur_dia": 0.2061,
       "energia_efetiva_eur_kwh": null,
       "potencia_efetiva_eur_dia": null,
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -930,8 +930,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 1 ano; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -948,7 +948,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -965,7 +965,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -982,8 +982,8 @@
       "iva_incluido": false,
       "condicoes": "indexado OMIE (indicativo); cooperativa 60€ p/ aderir",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1000,8 +1000,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% energia 1º ano; 100% verde; base 0,1621; DD+fatura elet.",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1018,8 +1018,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% 1º ano (DD+digital); base 0,163516/0,8147; +5% promo 3m",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1036,8 +1036,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1054,7 +1054,7 @@
       "iva_incluido": false,
       "condicoes": "fixo, sem fidelização",
       "sources": {
-        "site": "2026-07-30"
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1071,7 +1071,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1088,8 +1088,8 @@
       "iva_incluido": false,
       "condicoes": "exclusivo sócios ACP (4,90€+/mês)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1106,8 +1106,8 @@
       "iva_incluido": false,
       "condicoes": "base; -12% c/ débito direto + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1124,8 +1124,8 @@
       "iva_incluido": false,
       "condicoes": "fixo, s/ fidelização; 40€ bónus; 100% verde",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1142,8 +1142,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, sem fidelização",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1160,7 +1160,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1177,7 +1177,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1194,7 +1194,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1211,8 +1211,8 @@
       "iva_incluido": false,
       "condicoes": "0,1499 c/ pacote MEO telecom + DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1229,8 +1229,8 @@
       "iva_incluido": false,
       "condicoes": "tarifa regulada (comercializador último recurso)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1247,8 +1247,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, 100% verde; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1265,8 +1265,8 @@
       "iva_incluido": false,
       "condicoes": "opção renovável / não-renovável",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1283,8 +1283,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m; online, DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1301,7 +1301,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1318,8 +1318,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1336,7 +1336,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1353,8 +1353,8 @@
       "iva_incluido": false,
       "condicoes": "só c/ cartão Vodafone p/ -23%; base 0,185",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1363,15 +1363,15 @@
       "plano": "Online 2026",
       "potencia_kva": 3.45,
       "ciclo": "Simples",
-      "tipo": "indexado",
-      "energia_base_eur_kwh": 0.1929,
-      "potencia_base_eur_dia": 0.2749,
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1389,
+      "potencia_base_eur_dia": 0.3092,
       "energia_efetiva_eur_kwh": null,
       "potencia_efetiva_eur_dia": null,
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1388,8 +1388,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 1 ano; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1406,7 +1406,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1423,7 +1423,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1440,8 +1440,8 @@
       "iva_incluido": false,
       "condicoes": "indexado OMIE (indicativo); cooperativa 60€ p/ aderir",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1458,8 +1458,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% energia 1º ano; 100% verde; base 0,1621; DD+fatura elet.",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1476,8 +1476,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% 1º ano (DD+digital); base 0,163516/0,8147; +5% promo 3m",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1494,8 +1494,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1512,7 +1512,7 @@
       "iva_incluido": false,
       "condicoes": "fixo, sem fidelização",
       "sources": {
-        "site": "2026-07-30"
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1529,7 +1529,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1546,8 +1546,8 @@
       "iva_incluido": false,
       "condicoes": "exclusivo sócios ACP (4,90€+/mês)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1564,8 +1564,8 @@
       "iva_incluido": false,
       "condicoes": "base; -12% c/ débito direto + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1582,8 +1582,8 @@
       "iva_incluido": false,
       "condicoes": "fixo, s/ fidelização; 40€ bónus; 100% verde",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1600,8 +1600,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, sem fidelização",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1618,7 +1618,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1635,7 +1635,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1652,7 +1652,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1669,8 +1669,8 @@
       "iva_incluido": false,
       "condicoes": "0,1499 c/ pacote MEO telecom + DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1687,8 +1687,8 @@
       "iva_incluido": false,
       "condicoes": "tarifa regulada (comercializador último recurso)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1705,8 +1705,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, 100% verde; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1723,8 +1723,8 @@
       "iva_incluido": false,
       "condicoes": "opção renovável / não-renovável",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1741,8 +1741,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m; online, DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1759,7 +1759,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1776,8 +1776,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1794,7 +1794,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1811,8 +1811,8 @@
       "iva_incluido": false,
       "condicoes": "só c/ cartão Vodafone p/ -23%; base 0,185",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1821,15 +1821,15 @@
       "plano": "Online 2026",
       "potencia_kva": 4.6,
       "ciclo": "Simples",
-      "tipo": "indexado",
-      "energia_base_eur_kwh": 0.1929,
-      "potencia_base_eur_dia": 0.3666,
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1389,
+      "potencia_base_eur_dia": 0.4124,
       "energia_efetiva_eur_kwh": null,
       "potencia_efetiva_eur_dia": null,
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1846,8 +1846,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 1 ano; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1864,7 +1864,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1881,7 +1881,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1898,8 +1898,8 @@
       "iva_incluido": false,
       "condicoes": "indexado OMIE (indicativo); cooperativa 60€ p/ aderir",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1916,8 +1916,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% energia 1º ano; 100% verde; base 0,1621; DD+fatura elet.",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1934,8 +1934,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% 1º ano (DD+digital); base 0,163516/0,8147; +5% promo 3m",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1952,8 +1952,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1970,7 +1970,7 @@
       "iva_incluido": false,
       "condicoes": "fixo, sem fidelização",
       "sources": {
-        "site": "2026-07-30"
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -1987,7 +1987,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2004,8 +2004,8 @@
       "iva_incluido": false,
       "condicoes": "exclusivo sócios ACP (4,90€+/mês)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2022,8 +2022,8 @@
       "iva_incluido": false,
       "condicoes": "base; -12% c/ débito direto + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2040,8 +2040,8 @@
       "iva_incluido": false,
       "condicoes": "fixo, s/ fidelização; 40€ bónus; 100% verde",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2058,8 +2058,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, sem fidelização",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2076,7 +2076,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2093,7 +2093,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2110,7 +2110,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2127,8 +2127,8 @@
       "iva_incluido": false,
       "condicoes": "0,1499 c/ pacote MEO telecom + DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2145,8 +2145,8 @@
       "iva_incluido": false,
       "condicoes": "tarifa regulada (comercializador último recurso)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2163,8 +2163,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, 100% verde; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2181,8 +2181,8 @@
       "iva_incluido": false,
       "condicoes": "opção renovável / não-renovável",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2199,8 +2199,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m; online, DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2217,7 +2217,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2234,8 +2234,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2252,7 +2252,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2269,8 +2269,8 @@
       "iva_incluido": false,
       "condicoes": "só c/ cartão Vodafone p/ -23%; base 0,185",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2279,15 +2279,15 @@
       "plano": "Online 2026",
       "potencia_kva": 5.75,
       "ciclo": "Simples",
-      "tipo": "indexado",
-      "energia_base_eur_kwh": 0.1929,
-      "potencia_base_eur_dia": 0.4582,
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1389,
+      "potencia_base_eur_dia": 0.5155,
       "energia_efetiva_eur_kwh": null,
       "potencia_efetiva_eur_dia": null,
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2304,8 +2304,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 1 ano; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2322,7 +2322,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2339,7 +2339,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2356,8 +2356,8 @@
       "iva_incluido": false,
       "condicoes": "indexado OMIE (indicativo); cooperativa 60€ p/ aderir",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": "promo_or_stale"
     },
@@ -2374,8 +2374,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% energia 1º ano; 100% verde; base 0,1621; DD+fatura elet.",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": "promo_or_stale"
     },
@@ -2392,8 +2392,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% 1º ano (DD+digital); base 0,163516/0,8147; +5% promo 3m",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2410,8 +2410,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2428,7 +2428,7 @@
       "iva_incluido": false,
       "condicoes": "fixo, sem fidelização",
       "sources": {
-        "site": "2026-07-30"
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2445,7 +2445,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2462,8 +2462,8 @@
       "iva_incluido": false,
       "condicoes": "exclusivo sócios ACP (4,90€+/mês)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": "promo_or_stale"
     },
@@ -2480,8 +2480,8 @@
       "iva_incluido": false,
       "condicoes": "base; -12% c/ débito direto + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": "promo_or_stale"
     },
@@ -2498,8 +2498,8 @@
       "iva_incluido": false,
       "condicoes": "fixo, s/ fidelização; 40€ bónus; 100% verde",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2516,8 +2516,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, sem fidelização",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2534,7 +2534,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2551,7 +2551,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2568,7 +2568,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2585,8 +2585,8 @@
       "iva_incluido": false,
       "condicoes": "0,1499 c/ pacote MEO telecom + DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": "promo_or_stale"
     },
@@ -2603,8 +2603,8 @@
       "iva_incluido": false,
       "condicoes": "tarifa regulada (comercializador último recurso)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2621,8 +2621,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, 100% verde; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2639,8 +2639,8 @@
       "iva_incluido": false,
       "condicoes": "opção renovável / não-renovável",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2657,8 +2657,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m; online, DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": "promo_or_stale"
     },
@@ -2675,7 +2675,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2692,8 +2692,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": "promo_or_stale"
     },
@@ -2710,7 +2710,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2727,8 +2727,8 @@
       "iva_incluido": false,
       "condicoes": "só c/ cartão Vodafone p/ -23%; base 0,185",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": "promo_or_stale"
     },
@@ -2737,15 +2737,15 @@
       "plano": "Online 2026",
       "potencia_kva": 6.9,
       "ciclo": "Simples",
-      "tipo": "indexado",
-      "energia_base_eur_kwh": 0.1929,
-      "potencia_base_eur_dia": 0.5498,
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1389,
+      "potencia_base_eur_dia": 0.6185,
       "energia_efetiva_eur_kwh": null,
       "potencia_efetiva_eur_dia": null,
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2762,8 +2762,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 1 ano; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": "promo_or_stale"
     },
@@ -2780,7 +2780,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2797,7 +2797,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2814,8 +2814,8 @@
       "iva_incluido": false,
       "condicoes": "indexado OMIE (indicativo); cooperativa 60€ p/ aderir",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2832,8 +2832,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% energia 1º ano; 100% verde; base 0,1621; DD+fatura elet.",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2850,8 +2850,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% 1º ano (DD+digital); base 0,163516/0,8147; +5% promo 3m",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2868,8 +2868,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2886,7 +2886,7 @@
       "iva_incluido": false,
       "condicoes": "fixo, sem fidelização",
       "sources": {
-        "site": "2026-07-30"
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2903,7 +2903,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2920,8 +2920,8 @@
       "iva_incluido": false,
       "condicoes": "exclusivo sócios ACP (4,90€+/mês)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2938,8 +2938,8 @@
       "iva_incluido": false,
       "condicoes": "base; -12% c/ débito direto + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2956,8 +2956,8 @@
       "iva_incluido": false,
       "condicoes": "fixo, s/ fidelização; 40€ bónus; 100% verde",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2974,8 +2974,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, sem fidelização",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -2992,7 +2992,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3009,7 +3009,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3026,7 +3026,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3043,8 +3043,8 @@
       "iva_incluido": false,
       "condicoes": "0,1499 c/ pacote MEO telecom + DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3061,8 +3061,8 @@
       "iva_incluido": false,
       "condicoes": "tarifa regulada (comercializador último recurso)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3079,8 +3079,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, 100% verde; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3097,8 +3097,8 @@
       "iva_incluido": false,
       "condicoes": "opção renovável / não-renovável",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3115,8 +3115,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m; online, DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3133,7 +3133,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3150,8 +3150,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3168,7 +3168,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3185,8 +3185,8 @@
       "iva_incluido": false,
       "condicoes": "só c/ cartão Vodafone p/ -23%; base 0,185",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3195,15 +3195,15 @@
       "plano": "Online 2026",
       "potencia_kva": 10.35,
       "ciclo": "Simples",
-      "tipo": "indexado",
-      "energia_base_eur_kwh": 0.1929,
-      "potencia_base_eur_dia": 0.8246,
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1389,
+      "potencia_base_eur_dia": 0.8762,
       "energia_efetiva_eur_kwh": null,
       "potencia_efetiva_eur_dia": null,
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3220,8 +3220,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 1 ano; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3238,7 +3238,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3255,7 +3255,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3272,8 +3272,8 @@
       "iva_incluido": false,
       "condicoes": "indexado OMIE (indicativo); cooperativa 60€ p/ aderir",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3290,8 +3290,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% energia 1º ano; 100% verde; base 0,1621; DD+fatura elet.",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3308,8 +3308,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% 1º ano (DD+digital); base 0,163516/0,8147; +5% promo 3m",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3326,8 +3326,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3344,7 +3344,7 @@
       "iva_incluido": false,
       "condicoes": "fixo, sem fidelização",
       "sources": {
-        "site": "2026-07-30"
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3361,7 +3361,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3378,8 +3378,8 @@
       "iva_incluido": false,
       "condicoes": "exclusivo sócios ACP (4,90€+/mês)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3396,8 +3396,8 @@
       "iva_incluido": false,
       "condicoes": "base; -12% c/ débito direto + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3414,8 +3414,8 @@
       "iva_incluido": false,
       "condicoes": "fixo, s/ fidelização; 40€ bónus; 100% verde",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3432,8 +3432,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, sem fidelização",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3450,7 +3450,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3467,7 +3467,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3484,7 +3484,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3501,8 +3501,8 @@
       "iva_incluido": false,
       "condicoes": "0,1499 c/ pacote MEO telecom + DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3519,8 +3519,8 @@
       "iva_incluido": false,
       "condicoes": "tarifa regulada (comercializador último recurso)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3537,8 +3537,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, 100% verde; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3555,8 +3555,8 @@
       "iva_incluido": false,
       "condicoes": "opção renovável / não-renovável",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3573,8 +3573,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m; online, DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3591,7 +3591,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3608,8 +3608,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3626,7 +3626,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3643,8 +3643,8 @@
       "iva_incluido": false,
       "condicoes": "só c/ cartão Vodafone p/ -23%; base 0,185",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3653,15 +3653,15 @@
       "plano": "Online 2026",
       "potencia_kva": 13.8,
       "ciclo": "Simples",
-      "tipo": "indexado",
-      "energia_base_eur_kwh": 0.1929,
-      "potencia_base_eur_dia": 1.0995,
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1389,
+      "potencia_base_eur_dia": 1.1682,
       "energia_efetiva_eur_kwh": null,
       "potencia_efetiva_eur_dia": null,
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3678,8 +3678,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 1 ano; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3696,7 +3696,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3713,7 +3713,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3730,8 +3730,8 @@
       "iva_incluido": false,
       "condicoes": "indexado OMIE (indicativo); cooperativa 60€ p/ aderir",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3748,8 +3748,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% energia 1º ano; 100% verde; base 0,1621; DD+fatura elet.",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3766,8 +3766,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% 1º ano (DD+digital); base 0,163516/0,8147; +5% promo 3m",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3784,8 +3784,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3802,7 +3802,7 @@
       "iva_incluido": false,
       "condicoes": "fixo, sem fidelização",
       "sources": {
-        "site": "2026-07-30"
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3819,7 +3819,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3836,8 +3836,8 @@
       "iva_incluido": false,
       "condicoes": "exclusivo sócios ACP (4,90€+/mês)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3854,8 +3854,8 @@
       "iva_incluido": false,
       "condicoes": "base; -12% c/ débito direto + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3872,8 +3872,8 @@
       "iva_incluido": false,
       "condicoes": "fixo, s/ fidelização; 40€ bónus; 100% verde",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3890,8 +3890,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, sem fidelização",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3908,7 +3908,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3925,7 +3925,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3942,7 +3942,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3959,8 +3959,8 @@
       "iva_incluido": false,
       "condicoes": "0,1499 c/ pacote MEO telecom + DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3977,8 +3977,8 @@
       "iva_incluido": false,
       "condicoes": "tarifa regulada (comercializador último recurso)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -3995,8 +3995,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, 100% verde; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4013,8 +4013,8 @@
       "iva_incluido": false,
       "condicoes": "opção renovável / não-renovável",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4031,8 +4031,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m; online, DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4049,7 +4049,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4066,8 +4066,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4084,7 +4084,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4101,8 +4101,8 @@
       "iva_incluido": false,
       "condicoes": "só c/ cartão Vodafone p/ -23%; base 0,185",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4111,15 +4111,15 @@
       "plano": "Online 2026",
       "potencia_kva": 17.25,
       "ciclo": "Simples",
-      "tipo": "indexado",
-      "energia_base_eur_kwh": 0.1929,
-      "potencia_base_eur_dia": 1.2887,
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1389,
+      "potencia_base_eur_dia": 1.3746,
       "energia_efetiva_eur_kwh": null,
       "potencia_efetiva_eur_dia": null,
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4136,8 +4136,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 1 ano; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4154,7 +4154,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4171,7 +4171,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4188,8 +4188,8 @@
       "iva_incluido": false,
       "condicoes": "indexado OMIE (indicativo); cooperativa 60€ p/ aderir",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4206,8 +4206,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% energia 1º ano; 100% verde; base 0,1621; DD+fatura elet.",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4224,8 +4224,8 @@
       "iva_incluido": false,
       "condicoes": "c/ 15% 1º ano (DD+digital); base 0,163516/0,8147; +5% promo 3m",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4242,8 +4242,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4260,7 +4260,7 @@
       "iva_incluido": false,
       "condicoes": "fixo, sem fidelização",
       "sources": {
-        "site": "2026-07-30"
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4277,7 +4277,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4294,8 +4294,8 @@
       "iva_incluido": false,
       "condicoes": "exclusivo sócios ACP (4,90€+/mês)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4312,8 +4312,8 @@
       "iva_incluido": false,
       "condicoes": "base; -12% c/ débito direto + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4330,8 +4330,8 @@
       "iva_incluido": false,
       "condicoes": "fixo, s/ fidelização; 40€ bónus; 100% verde",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4348,8 +4348,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, sem fidelização",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4366,7 +4366,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4383,7 +4383,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4400,7 +4400,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4417,8 +4417,8 @@
       "iva_incluido": false,
       "condicoes": "0,1499 c/ pacote MEO telecom + DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4435,8 +4435,8 @@
       "iva_incluido": false,
       "condicoes": "tarifa regulada (comercializador último recurso)",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4453,8 +4453,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m, 100% verde; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4471,8 +4471,8 @@
       "iva_incluido": false,
       "condicoes": "opção renovável / não-renovável",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4489,8 +4489,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12m; online, DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4507,7 +4507,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4524,8 +4524,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 12 meses",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4542,7 +4542,7 @@
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4559,8 +4559,8 @@
       "iva_incluido": false,
       "condicoes": "só c/ cartão Vodafone p/ -23%; base 0,185",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4569,15 +4569,15 @@
       "plano": "Online 2026",
       "potencia_kva": 20.7,
       "ciclo": "Simples",
-      "tipo": "indexado",
-      "energia_base_eur_kwh": 0.1929,
-      "potencia_base_eur_dia": 1.5464,
+      "tipo": "fixo",
+      "energia_base_eur_kwh": 0.1389,
+      "potencia_base_eur_dia": 1.6494,
       "energia_efetiva_eur_kwh": null,
       "potencia_efetiva_eur_dia": null,
       "iva_incluido": false,
       "condicoes": "",
       "sources": {
-        "erse": "2026-07-30"
+        "erse": "2026-07-31"
       },
       "divergence_flag": null
     },
@@ -4594,8 +4594,8 @@
       "iva_incluido": false,
       "condicoes": "fixo 1 ano; DD + fatura eletrónica",
       "sources": {
-        "erse": "2026-07-30",
-        "site": "2026-07-30"
+        "erse": "2026-07-31",
+        "site": "2026-07-31"
       },
       "divergence_flag": null
     }
