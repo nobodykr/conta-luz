@@ -362,6 +362,8 @@
     var w=$('periodWarn');
     if(state.dayCount<days-1){ w.style.display='block';
       w.textContent='O CSV cobre '+state.dayCount+' dia(s) mas o período fixo assume '+nf(days,0)+' dias. Para o total fechar certo, usa o CSV do período de faturação completo.'; }
+    else if(!state.billPeriod && state.dayCount>days+1){ w.style.display='block';
+      w.textContent='O CSV cobre '+state.dayCount+' dia(s) — mais do que os '+nf(days,0)+' do período. Larga o PDF da fatura acima para cortar automaticamente ao período de faturação.'; }
     else w.style.display='none';
 
     renderForecast(r);
@@ -461,13 +463,54 @@
   }
   function fileErr(msg){ var d=$('drop'); d.classList.remove('loaded'); state.loaded=false;
     d.innerHTML='<div class="big" style="color:var(--crit)">'+esc(msg)+'</div><div class="small">clica para escolher outro ficheiro</div>'; }
+  // "dd/mm/yyyy" -> "yyyy-mm-dd" (comparable as string)
+  function isoKey(dmy){ var p=dmy.split('/'); return p[2]+'-'+p[1]+'-'+p[0]; }
+  // Pure core of the bill-window clamp: keep only CSV days inside [per.from, per.to] (ISO keys).
+  // The FATURA defines the period; the Shelly export window is whatever the picker gave - days
+  // outside the bill belong to the previous/next invoice and must never be charged here.
+  function filterByPeriod(rpDays, per){
+    var days={}, excl=[], totalWh=0;
+    Object.keys(rpDays).forEach(function(d){
+      var k=isoKey(d);
+      if(per && (k<per.from || k>per.to)){ excl.push({d:d, wh:rpDays[d]}); return; }
+      days[d]=rpDays[d]; totalWh+=rpDays[d];
+    });
+    excl.sort(function(a,b){ return isoKey(a.d)<isoKey(b.d)?-1:1; });
+    return {days:days, kWh:totalWh/1000, excl:excl};
+  }
+  // Re-derive the working state from the raw parse + the bill period. Called on CSV drop AND on
+  // PDF fill, so the clamp works in either drop order.
+  function applyBillWindow(){
+    if(!state.rp) return;
+    var rp=state.rp, per=state.billPeriod||null;
+    var f=filterByPeriod(rp.days, per);
+    var keys=Object.keys(f.days).map(isoKey).sort();
+    state.kWh=f.kWh; state.days=f.days; state.dayCount=keys.length; state.excluded=f.excl;
+    state.from=keys.length?keys[0].split('-').reverse().join('/'):null;
+    state.to=keys.length?keys[keys.length-1].split('-').reverse().join('/'):null;
+    if(per && rp.stamps){ // forecast span must also respect the window
+      var lo=+new Date(per.from+'T00:00:00'), hi=+new Date(per.to+'T23:59:59');
+      state.stamps=rp.stamps.filter(function(t){ return t>=lo && t<=hi; });
+    } else state.stamps=rp.stamps;
+    state.loaded=state.dayCount>0;
+    var d=$('drop');
+    if(!state.loaded){ fileErr('Nenhum dia do CSV cai dentro do período da fatura ('+(per?per.from+' a '+per.to:'')+').'); return; }
+    d.classList.add('loaded');
+    var exclHtml='';
+    if(f.excl.length){
+      var lst=f.excl.map(function(e){ return e.d.slice(0,5)+': '+nf(e.wh/1000,1)+' kWh'; }).join(' · ');
+      exclHtml='<div class="filemeta" style="color:var(--muted)">'+f.excl.length+' dia(s) fora do período da fatura, ignorado(s) — '+esc(lst)+'</div>';
+    } else if(!per){
+      exclHtml='<div class="filemeta" style="color:var(--muted)">Sem fatura carregada — a somar o CSV inteiro. Larga o PDF para cortar ao período certo.</div>';
+    }
+    d.innerHTML='<div class="filerow"><span class="chk">✓</span><b>'+esc(state.name||'CSV')+'</b></div><div class="filemeta">'+nf(state.kWh,3)+' kWh · '+state.dayCount+' dia(s) · '+esc(state.from||'')+' → '+esc(state.to||'')+(per?' · período da fatura aplicado':'')+'</div>'+exclHtml;
+  }
   function loadText(text,name){
     var rp=parseShelly(text);
     if(rp.dayCount===0){ fileErr('CSV sem linhas de consumo. É o export horário do Shelly?'); return; }
-    state.kWh=rp.kWh; state.days=rp.days; state.from=rp.from; state.to=rp.to; state.dayCount=rp.dayCount; state.stamps=rp.stamps; state.loaded=true;
-    state.raw=text; state.name=name||'consumo.csv';
-    var d=$('drop'); d.classList.add('loaded');
-    d.innerHTML='<div class="filerow"><span class="chk">✓</span><b>'+esc(name||'CSV')+'</b></div><div class="filemeta">'+nf(rp.kWh,3)+' kWh · '+rp.dayCount+' dia(s) · '+esc(rp.from||'')+' → '+esc(rp.to||'')+'</div>';
+    state.rp=rp; state.raw=text; state.name=name||'consumo.csv';
+    applyBillWindow();
+    if(!state.loaded) return;
     $('detCard').style.display=''; $('fixedCard').style.display=''; $('forecastCard').style.display=''; $('chartCard').style.display='';
     renderSplit(); drawChart();
   }
@@ -543,6 +586,14 @@
   function invErr(msg){ var d=$('invDrop'); d.classList.remove('loaded');
     d.innerHTML='<div class="big" style="color:var(--crit)">'+esc(msg)+'</div><div class="small">clica para escolher outro ficheiro</div>'; }
   function fillTariffs(r){
+    // A fatura define o PERÍODO: guarda-o e re-corta o CSV já carregado (ordem de drop indiferente).
+    // Formato do parseInvoice: "15-07-2026 a 14-08-2026" (dd-mm-yyyy).
+    state.billPeriod=null;
+    if(r.period){
+      var pm=r.period.match(/(\d{2})-(\d{2})-(\d{4})\s+a\s+(\d{2})-(\d{2})-(\d{4})/);
+      if(pm) state.billPeriod={from:pm[3]+'-'+pm[2]+'-'+pm[1], to:pm[6]+'-'+pm[5]+'-'+pm[4]};
+    }
+    if(state.rp) applyBillWindow();
     var set=[['rEner',r.ener,6],['rRedes',r.redes,6],['rIEC',r.iec,6],['rPot',r.pot,6],
              ['rDgeg',r.dgeg,2],['rCav',r.cav,2],['rK6',r.k6,4],['rK23',r.k23,4],['rDays',r.days,0]];
     var filled=0,missing=[];
